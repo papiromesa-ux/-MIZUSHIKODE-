@@ -1,15 +1,21 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-analytics.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 
-const _sysConfig = {
-  apiKey: "AIzaSyCJLUtvrmiCuGqFu4_gj5P9vH4kUhDa2yA",
-  authDomain: "darkcode-3691d.firebaseapp.com",
-  projectId: "darkcode-3691d",
-  storageBucket: "darkcode-3691d.firebasestorage.app",
-  messagingSenderId: "968623196225",
-  appId: "1:968623196225:web:e1d97a0d1bef93c34d9ec0",
-  measurementId: "G-Y0L9D69KJ7"
+// Credenciales actualizadas por Karleotty (MizushiKode)
+const firebaseConfig = {
+  apiKey: "AIzaSyCZzTU4hhezvzGqUfEp1DRbMu_uF4_j_2o",
+  authDomain: "mizushikode-b56fa.firebaseapp.com",
+  projectId: "mizushikode-b56fa",
+  storageBucket: "mizushikode-b56fa.firebasestorage.app",
+  messagingSenderId: "622967401832",
+  appId: "1:622967401832:web:5dc315c5c282e4bd66fadd",
+  measurementId: "G-GNMCMPDS3Q"
 };
 
-const _appCore = initializeApp(_sysConfig);
-export const _secAuth = getAuth(_appCore);
+// Inicializar Firebase y Analytics
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+// Exportar la autenticación para usarla en el resto de la página
+export const _secAuth = getAuth(app);
