@@ -15,43 +15,59 @@
   <img src="assets/img/splash-alexander.png" alt="Cargando YamiCode..." style="width: 80%; max-width: 350px; border-radius: 20px; box-shadow: 0 0 30px rgba(123, 44, 191, 0.5);">
 </div>
 
-  <!-- /// 1. HEADER (Menú Hamburguesa CSS) \\\ -->
-  <header class="header">
-    <a href="index.html" class="logo">
-      <span class="logo-yami">&lt;YAMI</span><span class="logo-code">CODE&gt;</span>
+  <!-- /// 1. HEADER (Menú Academia 3D) \\\ -->
+<header class="header">
+  <a href="index.html" class="logo">
+    <span class="logo-yami">&lt;YAMI</span><span class="logo-code">CODE&gt;</span>
+  </a>
+  
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="nav" id="nav">
+    <div class="nav-title">ACADEMIA</div>
+    
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      Inicio
     </a>
     
-    <!-- Botón con las 3 líneas CSS -->
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <a href="pages/aula.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      Aulas
+    </a>
+    
+    <a href="pages/labs.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      Clubs
+    </a>
+    
+    <div class="nav-divider"></div>
+    
+    <div class="nav-title">HERRAMIENTAS</div>
+    
+    <!-- Convertidos en enlaces (Regla Cero Paneles) -->
+    <a href="pages/vestidores.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      Vestidores (Descargas)
+    </a>
+    
+    <a href="pages/buzon.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      Buzón (Reportes)
+    </a>
 
-    <nav class="nav" id="nav">
-      <div class="nav-title">SISTEMA</div>
-      <a href="index.html">Inicio</a>
-      <a href="pages/aula.html">Desarrollo Web</a>
-      <a href="pages/apps.html">Creación de Aplicaciones</a>
-      <a href="pages/labs.html">Especialidades</a>
-      <a href="pages/juegos.html">Juegos</a>
-      
-      <div class="nav-divider"></div>
-      
-      <div class="nav-title">HERRAMIENTAS</div>
-      <button id="btnAbrirDescargas" class="nav-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Descargas
-      </button>
-      <button id="btnAbrirReportes" class="nav-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-        Reportes
-      </button>
-
-      <div class="nav-divider"></div>
-      <a href="pages/login.html" id="navAuthBtn" class="btn-nav" style="text-align: center; margin-top: 10px; border: 1px solid var(--cian); padding: 8px; border-radius: 6px; color: var(--cian) !important;">Iniciar Sesión</a>
-    </nav>
-  </header>
+    <div class="nav-divider"></div>
+    
+    <a href="pages/login.html" id="navAuthBtn" class="btn-nav" style="text-align: center; justify-content: center; margin-top: 10px; border: 1px solid var(--cian); padding: 10px; border-radius: 6px; color: var(--cian) !important; background: rgba(0, 245, 255, 0.05);">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+      Iniciar Sesión
+    </a>
+  </nav>
+</header>
 
   <main>
     <!-- /// 2. HERO (BIENVENIDA) \\\ -->
