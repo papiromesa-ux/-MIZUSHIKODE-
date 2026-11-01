@@ -459,3 +459,73 @@ body.en-examen {
   height: 20px;
   stroke: currentColor;
 }
+
+/* /// 16. TARJETAS 3D (DISTRITOS Y CLUBS) \\\ */
+.card-3d {
+  background: linear-gradient(145deg, #181824, #101018);
+  border: 1px solid rgba(123, 44, 191, 0.3);
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-3d:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(123, 44, 191, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-color: rgba(123, 44, 191, 0.8);
+}
+
+.card-icon-3d {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(123, 44, 191, 0.1);
+  border-radius: 50%;
+  border: 1px solid rgba(123, 44, 191, 0.5);
+  box-shadow: 0 0 15px rgba(123, 44, 191, 0.2), inset 0 0 10px rgba(123, 44, 191, 0.2);
+  color: var(--cian);
+}
+
+.card-icon-3d svg {
+  width: 35px;
+  height: 35px;
+}
+
+.card-title-3d {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.card-text-3d {
+  color: var(--texto-dim);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.card-btn-3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  color: var(--cian);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+}
+
+.card-btn-3d:hover {
+  color: #fff;
+  text-shadow: 0 0 10px var(--cian);
+}
