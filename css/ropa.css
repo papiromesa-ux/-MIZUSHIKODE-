@@ -1,24 +1,63 @@
 /* /// 1. VARIABLES \\\ */
-/* /// 1. VARIABLES (PALETA RECOMENDADA POR EL PROFESIONAL) \\\ */
 :root {
-  --bg-dark: #0f0f11;       /* Negro pálido / grisáceo oscuro */
-  --bg-mid: #1a1a1f;        /* Negro un poco más claro para contraste */
-  --bg-card: #23232a;       /* Para las tarjetas */
+  --bg-dark: #0f0f11;       
+  --bg-mid: #1a1a1f;        
+  --bg-card: #23232a;       
   
-  --cian: #fce205;          /* Reemplazamos el cian por el Amarillo pálido/triste */
-  --violeta: #3b1b5c;       /* Morado oscuro profundo */
-  --magenta: #8b2fc9;       /* Un morado más claro para los acentos */
+  --cian: #fce205;          
+  --violeta: #3b1b5c;       
+  --magenta: #8b2fc9;       
   
   --texto: #e6e6f0;         
   --texto-dim: #9a9ab0;     
   --borde: rgba(252, 226, 5, 0.15); 
   --glow: 0 0 20px rgba(252, 226, 5, 0.3); 
 }
-/* /// 2. RESET Y FONDO \\\ */
+/* /// 2. RESET Y FONDO (ESTILO ACADEMIA 3D) \\\ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Rajdhani', sans-serif; background: var(--bg-dark); color: var(--texto); line-height: 1.6; overflow-x: hidden; }
-body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
 
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: #0d0d15; /* Un negro azulado profundo (más japonés/sobrio) */
+  color: var(--texto);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* El piso de cuadritos en perspectiva (El Viewport) */
+body::before {
+  content: '';
+  position: fixed;
+  bottom: -10vh;
+  left: -50%;
+  width: 200%;
+  height: 70vh;
+  background-image: 
+    linear-gradient(rgba(123, 44, 191, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123, 44, 191, 0.2) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(600px) rotateX(65deg);
+  transform-origin: bottom center;
+  pointer-events: none;
+  z-index: 0;
+  /* Hace que el piso se pierda en la oscuridad hacia el fondo */
+  mask-image: linear-gradient(to top, black 10%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to top, black 10%, transparent 90%);
+}
+
+/* Un resplandor cenital (como la luz de un aula) */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at 50% -20%, rgba(123, 44, 191, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
 /* /// 3. HEADER Y MENÚ HAMBURGUESA \\\ */
 .header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: rgba(10, 10, 18, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); }
 .logo { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: 2px; text-decoration: none; display: flex; align-items: center;}
