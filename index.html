@@ -57,17 +57,28 @@
     <!-- /// 2. HERO (BIENVENIDA) \\\ -->
     <section class="hero">
       <div class="hero-text">
-        <h1 class="hero-title">
-          &lt;SCHWARZ<span class="neon">KODE&gt;</span>.<br>
-          &lt;DARK<span class="neon">CODE&gt;</span>.<br>
-          &lt;CODIGO<span class="neon">OSCURO&gt;</span>.
-        </h1>
-        <p class="hero-sub">&lt;La academia de programación&gt;</p>
-        <div class="hero-btns">
-          <a href="pages/aula.html" class="btn btn-primary">&lt;Ver Programas&gt;</a>
-          <a href="pages/labs.html" class="btn btn-ghost">&lt;Ir a especialidades&gt;</a>
-        </div>
-      </div>
+  <!-- Aplicamos la clase texto-3d -->
+  <h1 class="texto-3d">
+    <span class="logo-yami">&lt;YAMI</span><span class="logo-code">CODE&gt;</span><br>
+    ACADEMIA
+  </h1>
+  <p class="hero-sub" style="text-align: center; font-size: 1.2rem; color: var(--texto-dim);">&lt;Bienvenido a tu entrenamiento&gt;</p>
+  
+  <div class="hero-btns" style="justify-content: center; gap: 1rem; display: flex; flex-wrap: wrap;">
+    <!-- Ejemplo de botón con Icono (Regla de accesibilidad) -->
+    <a href="pages/aula.html" class="btn btn-primary btn-icono">
+      <!-- Icono de computadora/estudio -->
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+      Entrar a las Aulas
+    </a>
+    
+    <a href="pages/labs.html" class="btn btn-ghost btn-icono">
+      <!-- Icono de puerta/entrada -->
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+      Ir a los Clubs
+    </a>
+  </div>
+</div>
       
       <!-- /// 3. CAJA DEL AVATAR 3D \\\ -->
       <div class="hero-avatar">
