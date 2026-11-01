@@ -408,3 +408,54 @@ body.en-examen {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+/* /// 15. TEXTOS 3D Y SIMETRÍA (ACADEMIA JAPONESA) \\\ */
+
+/* Efecto base para títulos principales */
+.texto-3d {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center; /* Simetría total */
+  letter-spacing: 3px; /* Separación entre letras */
+  line-height: 1.2;
+  /* El truco del 3D: sombras múltiples para simular profundidad */
+  text-shadow: 
+    1px 1px 0 #a1a1b0,
+    2px 2px 0 #9a9ab0,
+    3px 3px 0 #8a8a9a,
+    4px 4px 0 #7a7a8a,
+    5px 5px 15px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1rem;
+}
+
+/* Variante con color neón (para títulos específicos) */
+.texto-3d-neon {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  color: var(--cian);
+  text-align: center;
+  letter-spacing: 3px;
+  text-shadow: 
+    1px 1px 0 #007a80,
+    2px 2px 0 #006066,
+    3px 3px 0 #00474d,
+    4px 4px 0 #002e33,
+    5px 5px 20px rgba(0, 245, 255, 0.6);
+}
+
+/* El estilo para los botones que llevarán iconos */
+.btn-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espacio entre el icono y el texto */
+  text-decoration: none;
+}
+
+/* Ajuste para que los iconos SVG dentro de los botones se vean bien */
+.btn-icono svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
