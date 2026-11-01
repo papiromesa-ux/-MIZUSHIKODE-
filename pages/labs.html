@@ -3,99 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Especialidades - &lt;YamiCode&gt;</title>
+  <title>Clubs Especiales - &lt;YamiCode&gt;</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/ropa.css">
 </head>
 <body>
-  <header class="header">
-  <a href="../index.html" class="logo">
-    <span class="logo-yami">&lt;YAMI</span><span class="logo-code">CODE&gt;</span>
-  </a>
   
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <!-- HEADER (Actualizado) -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <span class="logo-yami">&lt;YAMI</span><span class="logo-code">CODE&gt;</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <nav class="nav" id="nav">
-    <div class="nav-title">SISTEMA</div>
-    <a href="../index.html">Inicio</a>
-    <a href="aula.html">Desarrollo Web</a>
-    <a href="apps.html">Creación de Aplicaciones</a>
-    <a href="labs.html">Especialidades</a>
-    <a href="juegos.html">Juegos</a>
-    
-    <div class="nav-divider"></div>
-    
-    <div class="nav-title">HERRAMIENTAS</div>
-    <a href="../index.html#descargas">Descargas</a>
-    <a href="../index.html#reportes">Reportes</a>
+    <nav class="nav" id="nav">
+      <div class="nav-title">ACADEMIA</div>
+      <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg> Inicio</a>
+      <a href="aula.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> Aulas</a>
+      <a href="labs.html" style="color: var(--cian);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Clubs</a>
+      
+      <div class="nav-divider"></div>
+      
+      <div class="nav-title">HERRAMIENTAS</div>
+      <a href="vestidores.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Vestidores</a>
+      <a href="buzon.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Buzón</a>
 
-    <div class="nav-divider"></div>
+      <div class="nav-divider"></div>
+      <a href="login.html" class="btn-nav" style="text-align: center; justify-content: center; border: 1px solid var(--cian); padding: 10px; border-radius: 6px; color: var(--cian) !important; background: rgba(0, 245, 255, 0.05);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg> Iniciar Sesión</a>
+    </nav>
+  </header>
+
+  <main class="section">
     
-    <a href="login.html" class="btn-nav" style="text-align: center; margin-top: 10px; border: 1px solid var(--cian); padding: 8px; border-radius: 6px; color: var(--cian) !important;">Iniciar Sesión</a>
-  </nav>
-</header>
-  <main>
-    <header class="page-header">
-      <h1 class="page-title">Áreas de <span class="neon">Especialización</span></h1>
-      <p class="section-sub">Ramas avanzadas que no cualquiera domina. Elige tu camino.</p>
+    <header class="page-header" style="padding-top: 2rem; padding-bottom: 1rem;">
+      <h1 class="texto-3d" style="font-size: 2.5rem; margin-bottom: 0.5rem;">&lt;Clubs&gt; ESPECIALES</h1>
+      <p class="section-sub" style="text-align: center; color: var(--texto-dim);">Únete a las actividades extracurriculares de la academia.</p>
     </header>
 
-<section class="section">
-  <!-- Cambiamos grid-3 por flex para centrar la última fila -->
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 2rem;">
-    
-    <div class="card card-ciber" style="text-align: center; flex: 1 1 280px; max-width: 360px;">
-      <div class="card-badge">Defensa</div>
-      <img src="../assets/img/cs.png" alt="Ciberseguridad" class="card-img">
-      <h3>Ciberseguridad</h3>
-      <p style="margin-bottom: 1rem;">Protege sistemas, identifica vulnerabilidades web, APKs y EXEs, y aplica OWASP Top 10.</p>
-      <a href="#" class="btn btn-primary" style="width:100%;">Entrar</a>
-    </div>
+    <!-- Grid de Clubs -->
+    <div class="grid-3">
+      
+      <!-- Club de Ciberseguridad -->
+      <div class="card-3d">
+        <div class="card-icon-3d">
+          <!-- Icono de Escudo/Candado -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3 class="card-title-3d">Ciberseguridad</h3>
+        <p class="card-text-3d">Aprende a proteger sistemas, hackear éticamente y defender redes.</p>
+        <a href="#" class="card-btn-3d">
+          Entrar al Club
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
 
-    <div class="card card-hackodeo" style="text-align: center; flex: 1 1 280px; max-width: 360px;">
-      <div class="card-badge badge-magenta">Ataque</div>
-      <img src="../assets/img/hc.png" alt="Hackodeo" class="card-img">
-      <h3>Hackodeo</h3>
-      <p style="margin-bottom: 1rem;">Hacking intensivo, MODs de software, análisis de ejecutables y explotación en laboratorios.</p>
-      <a href="#" class="btn btn-primary btn-magenta" style="width:100%;">Entrar</a>
-    </div>
+      <!-- Club de Hackodeo -->
+      <div class="card-3d">
+        <div class="card-icon-3d">
+          <!-- Icono de Terminal -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+        </div>
+        <h3 class="card-title-3d">Hackodeo</h3>
+        <p class="card-text-3d">Modificación de software, análisis de ejecutables y exploits.</p>
+        <a href="#" class="card-btn-3d">
+          Entrar al Club
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
 
-    <div class="card card-gamercraft" style="text-align: center; flex: 1 1 280px; max-width: 360px;">
-      <div class="card-badge">Creación</div>
-      <img src="../assets/img/gc.png" alt="Gamercraft" class="card-img">
-      <h3>Gamercraft</h3>
-      <p style="margin-bottom: 1rem;">Diseño y programación de videojuegos. Motores, físicas, lógica y creación de mundos.</p>
-      <a href="#" class="btn btn-primary" style="width:100%;">Entrar</a>
-    </div>
+      <!-- Club de Gamercraft -->
+      <div class="card-3d">
+        <div class="card-icon-3d">
+          <!-- Icono de Gamepad -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line><rect x="2" y="6" width="20" height="12" rx="2"></rect></svg>
+        </div>
+        <h3 class="card-title-3d">Gamercraft</h3>
+        <p class="card-text-3d">Diseño y programación de videojuegos con motores gráficos.</p>
+        <a href="#" class="card-btn-3d">
+          Entrar al Club
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
 
-    <div class="card card-android" style="text-align: center; flex: 1 1 280px; max-width: 360px;">
-      <div class="card-badge">Sistemas</div>
-      <img src="../assets/img/sm.png" alt="Software Móvil" class="card-img">
-      <h3>Software Móvil</h3>
-      <p style="margin-bottom: 1rem;">Creación de sistemas operativos y software de bajo nivel para teléfonos (como Android).</p>
-      <a href="#" class="btn btn-primary" style="width:100%;">Entrar</a>
-    </div>
+      <!-- Club de Software Móvil -->
+      <div class="card-3d">
+        <div class="card-icon-3d">
+          <!-- Icono de Celular -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        </div>
+        <h3 class="card-title-3d">Software Móvil</h3>
+        <p class="card-text-3d">Creación de sistemas operativos y desarrollo para Android.</p>
+        <a href="#" class="card-btn-3d">
+          Entrar al Club
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
 
-    <div class="card card-linux" style="text-align: center; flex: 1 1 280px; max-width: 360px;">
-      <div class="card-badge">Sistemas</div>
-      <img src="../assets/img/sw.png" alt="Software Computer" class="card-img">
-      <h3>Software Computer</h3>
-      <p style="margin-bottom: 1rem;">Desarrollo de software a nivel de sistema para computadoras y servidores.</p>
-      <a href="#" class="btn btn-primary" style="width:100%;">Entrar</a>
-    </div>
+      <!-- Club de Software Computer -->
+      <div class="card-3d">
+        <div class="card-icon-3d">
+          <!-- Icono de Monitor/PC -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <h3 class="card-title-3d">Software Computer</h3>
+        <p class="card-text-3d">Desarrollo de software pesado y sistemas para computadoras.</p>
+        <a href="#" class="card-btn-3d">
+          Entrar al Club
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
 
-  </div>
-</section>
-</main>
+    </div>
+  </main>
 
   <footer class="footer">
     <div class="footer-logo"><span class="logo-yami">YAMI</span><span class="logo-code">CODE</span></div>
     <p>PAPIROMESA-UX RELEASE 1 YAMICODE.</p>
   </footer>
+
   <script src="../js/cerebro.js"></script>
 </body>
 </html>
