@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pianocode - &lt;MizushiKode&gt;</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/ropa.css">
+  <link rel="stylesheet" href="../css/pianocode.css">
+</head>
+<body class="pianocode-body">
+
+  <!-- HUD (Puntos y Vidas) -->
+  <div class="hud-piano">
+    <div class="hud-item">
+      <span>PUNTOS</span>
+      <strong id="score">0</strong>
+    </div>
+    <div class="hud-item">
+      <span>COMBO</span>
+      <strong id="combo" style="color: var(--magenta);">x1</strong>
+    </div>
+  </div>
+
+  <!-- Contenedor del Juego -->
+  <div class="game-container">
+    <div id="game-board" class="game-board">
+      <!-- Aquí JavaScript inyectará las notas -->
+      
+      <!-- La línea de impacto -->
+      <div class="hit-line"></div>
+    </div>
+  </div>
+
+  <!-- Controles (Teclas) -->
+  <div class="controls-container">
+    <button class="btn-key" data-key="0">A</button>
+    <button class="btn-key" data-key="1">S</button>
+    <button class="btn-key" data-key="2">D</button>
+    <button class="btn-key" data-key="3">F</button>
+  </div>
+
+  <!-- Botón de salir -->
+  <a href="juegos.html" class="btn btn-ghost btn-icono btn-salir">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Salir
+  </a>
+
+  <!-- Este script tendrá la lógica del juego -->
+  <script src="../js/sys_pianocode.js"></script>
+</body>
+</html>
