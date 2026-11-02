@@ -10,17 +10,23 @@
 </head>
 <body class="pianocode-body">
 
-  <!-- HUD (Puntos y Vidas) -->
-  <div class="hud-piano">
-    <div class="hud-item">
-      <span>PUNTOS</span>
-      <strong id="score">0</strong>
-    </div>
-    <div class="hud-item">
-      <span>COMBO</span>
-      <strong id="combo" style="color: var(--magenta);">x1</strong>
-    </div>
+  <!-- HUD (Puntos, Vidas y Combo) -->
+<div class="hud-piano">
+  <div class="hud-item">
+    <span>PUNTOS</span>
+    <strong id="score">0</strong>
   </div>
+  
+  <!-- Contenedor de Vidas (Corazones) -->
+  <div class="hud-item" id="vidas-container" style="flex-direction: row; gap: 5px;">
+    <!-- Los corazones se inyectan desde JS -->
+  </div>
+
+  <div class="hud-item">
+    <span>COMBO</span>
+    <strong id="combo" style="color: var(--magenta);">x1</strong>
+  </div>
+</div>
 
   <!-- Contenedor del Juego -->
   <div class="game-container">
@@ -45,6 +51,22 @@
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Salir
   </a>
+
+  <!-- PANTALLA DE GAME OVER (Cero Paneles) -->
+<div id="game-over-screen" class="game-over-screen" style="display: none;">
+  <h1 class="texto-3d" style="color: var(--magenta); font-size: 3rem; margin-bottom: 1rem; text-shadow: 0 0 20px var(--magenta);">GAME OVER</h1>
+  <p style="font-size: 1.2rem; color: var(--texto); margin-bottom: 2rem;">Has perdido todas tus vidas en el Pianocode.</p>
+  <div style="font-family: 'Orbitron'; font-size: 2rem; color: var(--cian); margin-bottom: 3rem;">
+    PUNTOS: <span id="final-score">0</span>
+  </div>
+  <button id="btn-restart" class="btn btn-primary btn-icono" style="font-size: 1.2rem; padding: 15px 30px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+    Reintentar
+  </button>
+  <a href="juegos.html" class="btn btn-ghost btn-icono" style="margin-top: 1rem; font-size: 1.1rem;">
+    Salir al Arcade
+  </a>
+</div>
 
   <!-- Este script tendrá la lógica del juego -->
   <script src="../js/sys_pianocode.js"></script>
