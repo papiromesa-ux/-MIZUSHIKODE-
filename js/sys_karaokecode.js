@@ -1,3 +1,10 @@
+import { _db, _secAuth } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import { doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+let usuarioActual = null;
+onAuthStateChanged(_secAuth, (user) => { if (user) usuarioActual = user; });
+
 document.addEventListener('DOMContentLoaded', () => {
   const scoreEl = document.getElementById('score');
   const comboEl = document.getElementById('combo');
@@ -22,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < 3; i++) {
       const corazon = document.createElement('span');
       corazon.className = 'corazon' + (i >= vidas ? ' perdido' : '');
-      // SVG Corazón (Cero emojis)
       corazon.innerHTML = `
         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" stroke="none">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -54,11 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     estadoBoca.textContent = 'LA LA LA!';
     personajeBox.classList.add('abierto');
 
-    // La boca se cierra después de un tiempo aleatorio
-    const tiempoAbierta = 800 + Math.random() * 1000; // Entre 0.8s y 1.8s
+    const tiempoAbierta = 800 + Math.random() * 1000;
     timeoutCerrarBoca = setTimeout(() => {
       if (bocaAbierta) {
-        // Si se cierra la boca y el jugador NO cantó, pierde vida
         cerrarBoca();
         perderVida(); 
       }
@@ -73,16 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
     clearTimeout(timeoutCerrarBoca);
   }
 
-  // Ciclo que decide cuándo el personaje canta
   function cicloRitmo() {
     if (!isPlaying) return;
-    
-    // Espera un tiempo aleatorio antes de abrir la boca de nuevo
-    const tiempoEspera = 1000 + Math.random() * 2000; // Entre 1s y 3s
+    const tiempoEspera = 1000 + Math.random() * 2000;
     setTimeout(() => {
       if (isPlaying) {
         abrirBoca();
-        cicloRitmo(); // Se vuelve a llamar a sí mismo
+        cicloRitmo();
       }
     }, tiempoEspera);
   }
@@ -91,17 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isPlaying) return;
 
     if (bocaAbierta) {
-      // ¡Acierto!
       score += 20 + (combo * 5);
       combo++;
       actualizarUI();
       cerrarBoca();
       
-      // Pequeño efecto de acierto
       btnCantar.style.background = 'linear-gradient(135deg, #00ff88, #00f5ff)';
       setTimeout(() => { btnCantar.style.background = ''; }, 150);
     } else {
-      // Fallo: cantó cuando estaba cerrada
       perderVida();
       btnCantar.style.background = 'linear-gradient(135deg, #ff0000, #660000)';
       setTimeout(() => { btnCantar.style.background = ''; }, 150);
@@ -118,11 +116,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function finDelJuego() {
+  async function finDelJuego() {
     isPlaying = false;
     cerrarBoca();
     finalScoreEl.textContent = score;
     gameOverScreen.style.display = 'flex';
+
+    // GUARDAR PUNTOS EN FIREBASE
+    if (usuarioActual && score > 0) {
+      try {
+        const alumnoRef = doc(_db, "estudiantes", usuarioActual.uid);
+        await updateDoc(alumnoRef, {
+          xp: increment(score)
+        });
+      } catch (error) {
+        console.error("Error al guardar puntos:", error);
+      }
+    }
   }
 
   function iniciarJuego() {
@@ -137,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gameOverScreen.style.display = 'none';
     cerrarBoca();
     
-    // Iniciar el ciclo de la IA
     cicloRitmo();
   }
 
@@ -146,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cantar();
   });
 
-  // Soporte para barra espaciadora
   document.addEventListener('keydown', (e) => {
     if (e.key === ' ') {
       e.preventDefault();
