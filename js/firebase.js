@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-analytics.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
 
-// Credenciales actualizadas por Karleotty (MizushiKode)
 const firebaseConfig = {
   apiKey: "AIzaSyCZzTU4hhezvzGqUfEp1DRbMu_uF4_j_2o",
   authDomain: "mizushikode-b56fa.firebaseapp.com",
@@ -13,9 +13,9 @@ const firebaseConfig = {
   measurementId: "G-GNMCMPDS3Q"
 };
 
-// Inicializar Firebase y Analytics
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Exportar la autenticación para usarla en el resto de la página
+// Exportamos Auth y Firestore
 export const _secAuth = getAuth(app);
+export const _db = getFirestore(app);
