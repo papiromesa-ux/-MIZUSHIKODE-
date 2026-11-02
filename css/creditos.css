@@ -1,0 +1,48 @@
+/* /// CRÉDITOS 3D \\\ */
+body.creditos-body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #050508;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.ui-creditos {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ui-creditos h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: var(--cian);
+  text-shadow: 0 0 20px var(--cian);
+  margin-bottom: 0.5rem;
+  letter-spacing: 3px;
+}
+
+.ui-creditos p {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--texto-dim);
+  font-size: 1rem;
+  margin: 0.2rem 0;
+}
+
+.btn-salir-creditos {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  pointer-events: auto;
+}
