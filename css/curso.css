@@ -1,0 +1,104 @@
+/* /// MAPA DEL CURSO (ESTILO DUOLINGO) \\\ */
+.mapa-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  position: relative;
+}
+
+/* Línea vertical que conecta las clases */
+.mapa-container::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  left: 50%;
+  width: 4px;
+  background: rgba(123, 44, 191, 0.3);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.clase-nodo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.clase-circulo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  border: 4px solid var(--texto-dim);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.clase-circulo svg {
+  width: 40px;
+  height: 40px;
+  color: var(--texto-dim);
+}
+
+.clase-circulo.activa {
+  border-color: var(--cian);
+  box-shadow: 0 0 25px var(--cian);
+}
+
+.clase-circulo.activa svg {
+  color: var(--cian);
+}
+
+.clase-circulo.completada {
+  border-color: var(--magenta);
+  background: rgba(255, 46, 151, 0.1);
+  box-shadow: 0 0 25px var(--magenta);
+}
+
+.clase-circulo.completada svg {
+  color: var(--magenta);
+}
+
+.clase-circulo.bloqueada {
+  background: #0a0a12;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.clase-titulo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  color: var(--texto);
+  margin-top: 10px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.msj-bloqueo {
+  color: var(--magenta);
+  font-size: 0.85rem;
+  margin-top: 5px;
+  font-weight: bold;
+  animation: shake 0.3s;
+  display: none;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
