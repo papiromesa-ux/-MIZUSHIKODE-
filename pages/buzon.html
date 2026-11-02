@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buzón de Quejas - &lt;MizushiKode&gt;</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/ropa.css">
+  <style>
+    /* Estilos específicos para el formulario del buzón */
+    .buzon-box {
+      max-width: 600px; margin: 3rem auto; padding: 2.5rem;
+      background: linear-gradient(145deg, #181824, #101018);
+      border: 1px solid rgba(123, 44, 191, 0.5);
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .input-3d {
+      width: 100%; padding: 15px; background: #000; border: 1px solid var(--texto-dim);
+      color: var(--texto); border-radius: 8px; font-family: 'Rajdhani', sans-serif; font-size: 1rem; margin-bottom: 1.5rem;
+      transition: all 0.3s;
+    }
+    .input-3d:focus { border-color: var(--cian); box-shadow: 0 0 10px rgba(0,245,255,0.2); outline: none; }
+  </style>
+</head>
+<body>
+  
+  <!-- HEADER (Menú actualizado) -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <span class="logo-yami">&lt;MIZUSHI</span><span class="logo-code">KODE&gt;</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <div class="nav-title">ACADEMIA</div>
+      <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg> Inicio</a>
+      <a href="aula.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> Aulas</a>
+      <a href="labs.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Clubs</a>
+      
+      <div class="nav-divider"></div>
+      
+      <div class="nav-title">HERRAMIENTAS</div>
+      <a href="vestidores.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Vestidores</a>
+      <a href="buzon.html" style="color: var(--cian);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Buzón</a>
+
+      <div class="nav-divider"></div>
+      <a href="login.html" class="btn-nav" style="text-align: center; justify-content: center; border: 1px solid var(--cian); padding: 10px; border-radius: 6px; color: var(--cian) !important; background: rgba(0, 245, 255, 0.05);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg> Iniciar Sesión</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    
+    <header class="page-header" style="padding-top: 2rem; padding-bottom: 1rem;">
+      <h1 class="texto-3d" style="font-size: 2.5rem; margin-bottom: 0.5rem;">&lt;Buzón de&gt; QUEJAS</h1>
+      <p class="section-sub" style="text-align: center; color: var(--texto-dim);">¿Encontraste un error en el sistema o tienes una sugerencia? Déjanos tu reporte.</p>
+    </header>
+
+    <div class="buzon-box">
+      <form id="formReporte">
+        
+        <label style="color: var(--cian); font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: text-bottom; margin-right: 5px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Nombre del Estudiante
+        </label>
+        <input type="text" id="nombreReporte" class="input-3d" placeholder="Ej. Alexi" required>
+
+        <label style="color: var(--cian); font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: text-bottom; margin-right: 5px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          Tipo de Reporte
+        </label>
+        <select id="tipoReporte" class="input-3d">
+          <option value="error">Fallo en el Sistema (Bug)</option>
+          <option value="sugerencia">Sugerencia o Mejora</option>
+          <option value="contenido">Error en una Lección</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label style="color: var(--cian); font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: text-bottom; margin-right: 5px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Mensaje
+        </label>
+        <textarea id="mensajeReporte" class="input-3d" rows="5" placeholder="Describe el problema con el mayor detalle posible..." required></textarea>
+
+        <button type="button" id="btnEnviarReporte" class="btn btn-primary btn-icono" style="width: 100%; justify-content: center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          Enviar a WhatsApp
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo"><span class="logo-yami">MIZUSHI</span><span class="logo-code">KODE</span></div>
+    <p>PAPIROMESA-UX RELEASE 1 MIZUSHIKODE.</p>
+  </footer>
+
+  <script src="../js/cerebro.js"></script>
+  <script>
+    // Lógica para enviar a WhatsApp (Respetando la regla de cero paneles)
+    document.getElementById('btnEnviarReporte').addEventListener('click', () => {
+      const nombre = document.getElementById('nombreReporte').value.trim();
+      const tipo = document.getElementById('tipoReporte').value;
+      const mensaje = document.getElementById('mensajeReporte').value.trim();
+
+      if (!nombre || !mensaje) {
+        alert("Por favor, llena todos los campos antes de enviar.");
+        return;
+      }
+
+      const numero = "50368405099"; // Tu número de WhatsApp
+      const texto = `Hola, soy ${nombre} de la Academia MizushiKode.%0A%0A*Tipo:* ${tipo}%0A*Reporte:* ${mensaje}`;
+      const url = `https://wa.me/${numero}?text=${texto}`;
+      
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
