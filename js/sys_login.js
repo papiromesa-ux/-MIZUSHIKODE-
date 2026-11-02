@@ -1,4 +1,4 @@
-import { _secAuth } from "./firebase.js";
+import { _secAuth, _db } from "./firebase.js";
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   updateProfile
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
 
 onAuthStateChanged(_secAuth, (_sysUser) => {
   if (_sysUser) window.location.replace("../index.html"); 
@@ -25,7 +26,6 @@ const _emailInput = document.getElementById('email');
 const _ttl = document.getElementById('formTitle');
 const _sub = document.getElementById('formSub');
 
-// Lógica de detección del correo institucional
 _emailInput.addEventListener('input', (e) => {
   const val = e.target.value.trim().toLowerCase();
   if (val.endsWith('@clases.edu.sv')) {
@@ -63,10 +63,11 @@ _frm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const _eml = _emailInput.value;
   const _pwd = document.getElementById('password').value;
-  
+  let _colegio = "ordinario";
+
   if (!_isLog && _eml.endsWith('@clases.edu.sv')) {
-    const school = document.getElementById('schoolSelect').value;
-    if (!school) {
+    _colegio = document.getElementById('schoolSelect').value;
+    if (!_colegio) {
       _msg.textContent = "Por favor, selecciona tu institución educativa.";
       _msg.className = "mensaje error";
       return;
@@ -83,10 +84,27 @@ _frm.addEventListener('submit', async (e) => {
       const _cnf = document.getElementById('confirmPassword').value;
       if (_pwd !== _cnf) throw new Error("Las contraseñas no coinciden.");
       const _nm = document.getElementById('name').value;
+      
+      // 1. Crear usuario en Auth
       const _crd = await createUserWithEmailAndPassword(_secAuth, _eml, _pwd);
       await updateProfile(_crd.user, { displayName: _nm });
+      
+      // 2. Guardar datos en Firestore
+      const _datosAlumno = {
+        uid: _crd.user.uid,
+        nombre: _nm,
+        email: _eml,
+        colegio: _colegio,
+        rol: "estudiante",
+        xp: 0,
+        fecha_registro: new Date()
+      };
+
+      // Guardamos el documento usando el UID como nombre del documento
+      await setDoc(doc(_db, "estudiantes", _crd.user.uid), _datosAlumno);
     }
   } catch (_err) {
+    console.error(_err);
     let _m = _err.message || "Error: Revisa tus datos.";
     if (_err.code === 'auth/invalid-credential') _m = "Credenciales inválidas.";
     if (_err.code === 'auth/email-already-in-use') _m = "Este correo ya está registrado.";
@@ -98,6 +116,7 @@ _frm.addEventListener('submit', async (e) => {
   }
 });
 
+// Google
 document.getElementById('btnGoogle').addEventListener('click', async () => {
   const _prv = new GoogleAuthProvider();
   try {
@@ -108,12 +127,13 @@ document.getElementById('btnGoogle').addEventListener('click', async () => {
   }
 });
 
+// GitHub
 document.getElementById('btnGithub').addEventListener('click', async () => {
   const _prv = new GithubAuthProvider();
   try {
     await signInWithPopup(_secAuth, _prv);
   } catch (_err) {
-    _msg.textContent = "Error al conectar con GitHub. Verifica que el proveedor esté activado en Firebase.";
+    _msg.textContent = "Error al conectar con GitHub.";
     _msg.className = "mensaje error";
   }
 });
