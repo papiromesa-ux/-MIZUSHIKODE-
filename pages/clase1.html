@@ -1,26 +1,111 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Clase 1 - &lt;MizushiKode&gt;</title>
+  <title>Clase 1: HTML - &lt;MizushiKode&gt;</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/ropa.css">
   <link rel="stylesheet" href="../css/clase.css">
 </head>
 <body class="clase-body">
+
+  <!-- Barra Superior -->
   <header class="fases-header">
-    <div class="fase-paso activa" id="paso-1">1</div>
-    <div class="fase-paso" id="paso-2">2</div>
-    <div class="fase-paso" id="paso-3">3</div>
-    <div class="fase-paso" id="paso-4">4</div>
-    <div class="fase-paso" id="paso-5">5</div>
+    <div style="display: flex; gap: 10px;">
+      <div class="fase-paso activa" id="paso-1">1</div>
+      <div class="fase-paso" id="paso-2">2</div>
+      <div class="fase-paso" id="paso-3">3</div>
+      <div class="fase-paso" id="paso-4">4</div>
+      <div class="fase-paso" id="paso-5">5</div>
+    </div>
+    <!-- Contenedor de Vidas (SVG generados desde CSS/HTML) -->
+    <div id="vidas-container" class="vidas-container">
+      <svg class="corazon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="corazon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="corazon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </div>
   </header>
 
-  <main class="fase-content" id="contenido-fase">
-    <!-- El contenido se inyecta desde JS -->
+  <!-- Contenedor Principal -->
+  <main class="fase-content">
+    
+    <!-- FASE 1: TEORÍA -->
+    <div id="fase-1" class="fase-view active">
+      <div class="card-3d">
+        <div class="card-badge">Fase 1: Teoría</div>
+        <h2 class="texto-3d" style="text-align: left; font-size: 1.5rem;">Los Cimientos de la Web</h2>
+        <p style="color: var(--texto); margin-top: 1rem; line-height: 1.6;">Bienvenido a tu primera clase. El lenguaje HTML usa <strong>etiquetas</strong> para dar estructura. Una etiqueta de párrafo se escribe como <code>&lt;p&gt;</code>.</p>
+        <p id="msj-error-1" class="msj-error"></p>
+      </div>
+    </div>
+
+    <!-- FASE 2: PRÁCTICA (MIMO) -->
+    <div id="fase-2" class="fase-view">
+      <div class="card-3d" style="text-align: center;">
+        <div class="card-badge">Fase 2: Práctica</div>
+        <h2 class="texto-3d" style="font-size: 1.5rem; margin-bottom: 1rem;">Completa el código</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Para crear un párrafo, usa la letra:</p>
+        <div class="input-code-container">
+          <span>&lt;</span>
+          <input type="text" id="input-fase-2" class="input-mimo" autocomplete="off">
+          <span>&gt;</span>
+        </div>
+        <p id="msj-error-2" class="msj-error"></p>
+      </div>
+    </div>
+
+    <!-- FASE 3: PRÁCTICA (OPCIÓN MÚLTIPLE) -->
+    <div id="fase-3" class="fase-view">
+      <div class="card-3d" style="text-align: center;">
+        <div class="card-badge">Fase 3: Práctica</div>
+        <h2 class="texto-3d" style="font-size: 1.5rem; margin-bottom: 1rem;">Selecciona la correcta</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">¿Qué etiqueta se usa para hacer un salto de línea?</p>
+        <div class="opciones-grid">
+          <button class="btn btn-ghost opcion-btn" data-respuesta="incorrecta">&lt;p&gt;</button>
+          <button class="btn btn-ghost opcion-btn" data-respuesta="correcta">&lt;br&gt;</button>
+          <button class="btn btn-ghost opcion-btn" data-respuesta="incorrecta">&lt;a&gt;</button>
+        </div>
+        <p id="msj-error-3" class="msj-error"></p>
+      </div>
+    </div>
+
+    <!-- FASE 4: AYUDA A ALEXANDER -->
+    <div id="fase-4" class="fase-view">
+      <div class="card-3d" style="text-align: center;">
+        <div class="card-badge">Fase 4: Ayuda a Alexander</div>
+        <h2 class="texto-3d" style="font-size: 1.5rem; margin-bottom: 1rem;">Etiqueta de cierre</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Alexander olvidó cerrar su título. Escribe la etiqueta de cierre para <code>&lt;h1&gt;</code>:</p>
+        <input type="text" id="input-fase-4" class="input-texto" placeholder="Escribe el código aquí..." autocomplete="off">
+        <p id="msj-error-4" class="msj-error"></p>
+      </div>
+    </div>
+
+    <!-- FASE 5: AYUDA A ANDREA -->
+    <div id="fase-5" class="fase-view">
+      <div class="card-3d" style="text-align: center;">
+        <div class="card-badge">Fase 5: Ayuda a Andrea</div>
+        <h2 class="texto-3d" style="font-size: 1.5rem; margin-bottom: 1rem;">Comando de consola</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Andrea necesita imprimir un mensaje. Escribe el comando <code>console.log("Hola");</code></p>
+        <input type="text" id="input-fase-5" class="input-texto" placeholder="Escribe el código aquí..." autocomplete="off">
+        <p id="msj-error-5" class="msj-error"></p>
+      </div>
+    </div>
+
+    <!-- PANTALLA DE GAME OVER -->
+    <div id="pantalla-game-over" class="game-over-screen">
+      <h1 class="texto-3d" style="color: var(--magenta); font-size: 3rem; margin-bottom: 1rem;">GAME OVER</h1>
+      <p style="font-size: 1.2rem; color: var(--texto); margin-bottom: 2rem;">Te has quedado sin vidas en esta clase.</p>
+      <button id="btn-reintentar" class="btn btn-primary btn-icono" style="padding: 15px 30px; font-size: 1.2rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+        Reintentar Clase
+      </button>
+    </div>
+
   </main>
 
+  <!-- Botonera Inferior -->
   <footer class="fase-footer">
     <button id="btn-siguiente" class="btn btn-primary btn-icono" style="padding: 12px 40px; font-size: 1.1rem;">
       Siguiente Fase
