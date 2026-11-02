@@ -1,3 +1,10 @@
+import { _db, _secAuth } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import { doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+let usuarioActual = null;
+onAuthStateChanged(_secAuth, (user) => { if (user) usuarioActual = user; });
+
 document.addEventListener('DOMContentLoaded', () => {
   const board = document.getElementById('game-board');
   const scoreEl = document.getElementById('score');
@@ -23,20 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let animationFrame = null;
 
   function dibujarVidas() {
-  vidasContainer.innerHTML = '';
-  for (let i = 0; i < 3; i++) {
-    const corazon = document.createElement('span');
-    corazon.className = 'corazon' + (i >= vidas ? ' perdido' : '');
-    
-    // Icono SVG en lugar de emoji (Cero emojis en el código)
-    corazon.innerHTML = `
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" stroke="none">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-      </svg>
-    `;
-    vidasContainer.appendChild(corazon);
+    vidasContainer.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+      const corazon = document.createElement('span');
+      corazon.className = 'corazon' + (i >= vidas ? ' perdido' : '');
+      corazon.innerHTML = `
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" stroke="none">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      `;
+      vidasContainer.appendChild(corazon);
+    }
   }
-}
 
   function crearNota() {
     if (!isPlaying) return;
@@ -81,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nota.element.style.top = `${nota.y}px`;
 
         if (nota.y > hitLineY + ZONA_IMPACTO) {
-          // Nota fallada
           nota.element.style.opacity = '0.3';
           setTimeout(() => { if (nota.element.parentNode) board.removeChild(nota.element); }, 200);
           notasActivas.splice(i, 1);
@@ -134,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function perderVida() {
     vidas--;
-    perderCombo(); // Al fallar una nota, se pierde el combo
+    perderCombo();
     dibujarVidas();
     
     if (vidas <= 0) {
@@ -142,17 +146,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function finDelJuego() {
+  async function finDelJuego() {
     isPlaying = false;
     clearInterval(intervaloSpawn);
     cancelAnimationFrame(animationFrame);
     
-    // Detener todas las notas activas
     notasActivas.forEach(n => { if (n.element.parentNode) board.removeChild(n.element); });
     notasActivas = [];
     
     finalScoreEl.textContent = score;
     gameOverScreen.style.display = 'flex';
+
+    // GUARDAR PUNTOS EN FIREBASE
+    if (usuarioActual && score > 0) {
+      try {
+        const alumnoRef = doc(_db, "estudiantes", usuarioActual.uid);
+        await updateDoc(alumnoRef, {
+          xp: increment(score)
+        });
+      } catch (error) {
+        console.error("Error al guardar puntos:", error);
+      }
+    }
   }
 
   function iniciarJuego() {
@@ -161,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     vidas = 3;
     isPlaying = true;
     notasActivas = [];
-    board.innerHTML = '<div class="hit-line"></div>'; // Limpiar tablero y poner la línea
+    board.innerHTML = '<div class="hit-line"></div>';
     
     dibujarVidas();
     actualizarUI();
@@ -186,6 +201,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnRestart.addEventListener('click', iniciarJuego);
 
-  // Iniciar por primera vez
   iniciarJuego();
 });
