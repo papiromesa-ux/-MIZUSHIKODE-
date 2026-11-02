@@ -1,0 +1,13 @@
+.login-box-3d {
+  max-width: 450px; margin: 3rem auto; padding: 2.5rem;
+  background: linear-gradient(145deg, #181824, #101018);
+  border: 1px solid rgba(123, 44, 191, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.input-3d {
+  width: 100%; padding: 12px; background: #000; border: 1px solid var(--texto-dim);
+  color: var(--texto); border-radius: 8px; font-family: 'Rajdhani', sans-serif; font-size: 1rem; margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+.input-3d:focus { border-color: var(--cian); box-shadow: 0 0 10px rgba(0,245,255,0.2); outline: none; }
