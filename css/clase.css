@@ -6,6 +6,8 @@
   margin: 0;
   overflow: hidden;
 }
+
+/* Header y Fases */
 .fases-header {
   display: flex;
   justify-content: space-between;
@@ -15,8 +17,8 @@
   border-bottom: 2px solid var(--violeta);
 }
 .fase-paso {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #1a1a2e;
   border: 2px solid var(--texto-dim);
@@ -40,18 +42,118 @@
   border-color: var(--violeta);
   color: #fff;
 }
+
+/* Sistema de Vidas */
+.vidas-container {
+  display: flex;
+  gap: 5px;
+  color: var(--magenta);
+}
+.corazon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s;
+}
+.corazon.perdido {
+  filter: grayscale(100%) opacity(0.3);
+  transform: scale(0.8);
+}
+
+/* Contenido de las Fases */
 .fase-content {
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
   overflow-y: auto;
+  position: relative;
 }
+.fase-view {
+  display: none; /* Ocultas por defecto */
+  width: 100%;
+  max-width: 600px;
+}
+.fase-view.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Inputs Estilo Mimo */
+.input-code-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-family: monospace;
+}
+.input-mimo {
+  width: 80px;
+  font-size: 1.5rem;
+  background: #000;
+  color: var(--cian);
+  text-align: center;
+  border: 2px solid var(--cian);
+  border-radius: 8px;
+  outline: none;
+}
+.input-texto {
+  width: 100%;
+  padding: 15px;
+  background: #000;
+  border: 2px solid var(--texto-dim);
+  color: var(--cian);
+  font-family: monospace;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+.input-texto:focus {
+  border-color: var(--cian);
+}
+
+/* Opciones Múltiples */
+.opciones-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.opcion-btn {
+  font-family: monospace;
+  font-size: 1.2rem;
+}
+
+/* Mensajes de Error (Cero Paneles) */
+.msj-error {
+  color: var(--magenta);
+  font-weight: bold;
+  margin-top: 1rem;
+  display: none; /* Oculto hasta que haya error */
+}
+
+/* Pantalla de Game Over */
+.game-over-screen {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .fase-footer {
   padding: 20px;
   background: rgba(18, 18, 31, 0.9);
   border-top: 1px solid var(--borde);
   text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
