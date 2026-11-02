@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Créditos - &lt;MizushiKode&gt;</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/ropa.css">
+  <link rel="stylesheet" href="../css/creditos.css">
+</head>
+<body class="creditos-body">
+
+  <!-- Lienzo 3D de fondo -->
+  <div id="canvas-container"></div>
+
+  <!-- Botón para salir (enlaza a tu menú principal) -->
+  <a href="../index.html" class="btn btn-ghost btn-icono btn-salir-creditos">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Volver
+  </a>
+
+  <!-- Textos de créditos (Flotan sobre el 3D) -->
+  <div class="ui-creditos">
+    <h1>PAPIROMESA</h1>
+    <p>Un proyecto creado por el equipo de MizushiKode.</p>
+    <p>Alexi | Karleotty | Víctor | Perplexiti | DeepSeek</p>
+  </div>
+
+  <!-- Importmap necesario para que Three.js funcione en la página -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../js/libs/three.module.js",
+        "three/addons/": "../js/libs/addons/"
+      }
+    }
+  </script>
+  
+  <!-- El script con la lógica 3D (lo crearemos abajo) -->
+  <script type="module" src="../js/sys_creditos_3d.js"></script>
+</body>
+</html>
