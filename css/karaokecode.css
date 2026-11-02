@@ -1,0 +1,140 @@
+/* /// ESTILOS KARAOKECODE \\\ */
+.karaoke-body {
+  background-color: #050508;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+.escenario-karaoke {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Contenedor del personaje (Placeholder para el 3D o imagen) */
+.personaje-box {
+  width: 250px;
+  height: 350px;
+  background: rgba(123, 44, 191, 0.1);
+  border: 2px solid var(--violeta);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(123, 44, 191, 0.3);
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Aquí simula la "boca" del personaje */
+.estado-boca {
+  font-family: 'Orbitron';
+  font-size: 3rem;
+  font-weight: bold;
+  transition: all 0.1s;
+  z-index: 2;
+}
+
+.estado-boca.cerrada {
+  color: var(--texto-dim);
+  transform: scale(0.8);
+}
+
+.estado-boca.abierta {
+  color: var(--cian);
+  transform: scale(1.2);
+  text-shadow: 0 0 20px var(--cian);
+  animation: pulsoBoca 0.3s infinite alternate;
+}
+
+@keyframes pulsoBoca {
+  from { transform: scale(1); }
+  to { transform: scale(1.3); }
+}
+
+/* Brillo cuando está abierta */
+.personaje-box.abierto {
+  border-color: var(--cian);
+  box-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
+}
+
+.instruccion-karaoke {
+  margin-top: 20px;
+  font-family: 'Orbitron';
+  font-size: 1rem;
+  color: var(--texto);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Botón de cantar */
+.action-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 40px 0;
+}
+
+.btn-cantar {
+  width: 80%;
+  max-width: 300px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--magenta), var(--violeta));
+  border: none;
+  border-radius: 40px;
+  color: #fff;
+  font-family: 'Orbitron';
+  font-size: 1.8rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 20px rgba(255, 46, 151, 0.4);
+  transition: all 0.1s;
+}
+
+.btn-cantar:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 30px var(--magenta);
+}
+
+/* Reutilizamos estilos del game over del piano */
+.game-over-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.corazon {
+  transition: all 0.3s;
+  display: inline-flex;
+}
+
+.corazon.perdido {
+  filter: grayscale(100%) opacity(0.3);
+  transform: scale(0.8);
+}
+
+.btn-salir {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  z-index: 20;
+}
