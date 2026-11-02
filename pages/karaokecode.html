@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Karaokecode - &lt;MizushiKode&gt;</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/ropa.css">
+  <link rel="stylesheet" href="../css/karaokecode.css">
+</head>
+<body class="karaoke-body">
+
+  <!-- HUD -->
+  <div class="hud-piano">
+    <div class="hud-item">
+      <span>PUNTOS</span>
+      <strong id="score">0</strong>
+    </div>
+    <div class="hud-item" id="vidas-container" style="flex-direction: row; gap: 5px; display: flex; align-items: center; color: var(--magenta);">
+      <!-- Corazones SVG inyectados por JS -->
+    </div>
+    <div class="hud-item">
+      <span>COMBO</span>
+      <strong id="combo" style="color: var(--magenta);">x1</strong>
+    </div>
+  </div>
+
+  <!-- Escenario de Karaoke -->
+  <div class="escenario-karaoke">
+    <div id="personaje-box" class="personaje-box">
+      <!-- Aquí iría la imagen del personaje o el canvas 3D -->
+      <div id="estado-boca" class="estado-boca cerrada">
+        <span>Zzz</span>
+      </div>
+    </div>
+    <p class="instruccion-karaoke">¡Presiona "CANTAR" solo cuando abra la boca!</p>
+  </div>
+
+  <!-- Botón de Acción -->
+  <div class="action-container">
+    <button id="btn-cantar" class="btn-cantar">¡CANTAR!</button>
+  </div>
+
+  <!-- Botón de salir -->
+  <a href="juegos.html" class="btn btn-ghost btn-icono btn-salir">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Salir
+  </a>
+
+  <!-- Pantalla de Game Over -->
+  <div id="game-over-screen" class="game-over-screen" style="display: none;">
+    <h1 class="texto-3d" style="color: var(--magenta); font-size: 3rem; margin-bottom: 1rem;">GAME OVER</h1>
+    <p style="font-size: 1.2rem; color: var(--texto); margin-bottom: 2rem;">Te equivocaste en el ritmo. ¡Karaoke fallido!</p>
+    <div style="font-family: 'Orbitron'; font-size: 2rem; color: var(--cian); margin-bottom: 3rem;">
+      PUNTOS: <span id="final-score">0</span>
+    </div>
+    <button id="btn-restart" class="btn btn-primary btn-icono" style="font-size: 1.2rem; padding: 15px 30px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+      Reintentar
+    </button>
+    <a href="juegos.html" class="btn btn-ghost btn-icono" style="margin-top: 1rem; font-size: 1.1rem;">Salir al Arcade</a>
+  </div>
+
+  <script src="../js/sys_karaokecode.js"></script>
+</body>
+</html>
