@@ -1,4 +1,4 @@
-const CACHE_NAME = 'yamicode-R1.06';
+const CACHE_NAME = 'yamicode-R1.07';
 const ASSETS = [
   './',
   './index.html',
