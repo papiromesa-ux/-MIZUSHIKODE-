@@ -50,42 +50,55 @@
       </button>
     </div>
 
-    <!-- Sección de Modelos -->
-    <h2 class="texto-3d-neon" style="text-align: left; font-size: 1.8rem; margin-bottom: 1.5rem;">Modelos 3D</h2>
-    <div class="grid-3" style="margin-bottom: 3rem;">
-      
-      <!-- Modelo Alexander -->
-      <div class="card-3d" style="text-align: left;">
-        <h3 class="card-title-3d">Alexander</h3>
-        <p class="card-text-3d">Ropa escolar / Hacker. (7.75 MB)</p>
-        <button class="btn btn-ghost btn-icono" style="width: 100%; justify-content: flex-start;">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          Descargar Modelo
-        </button>
-      </div>
-
-      <!-- Modelo Andrea -->
-      <div class="card-3d" style="text-align: left;">
-        <h3 class="card-title-3d">Andrea</h3>
-        <p class="card-text-3d">Ropa escolar / Secretaria. (9.51 MB)</p>
-        <button class="btn btn-ghost btn-icono" style="width: 100%; justify-content: flex-start;">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          Descargar Modelo
-        </button>
-      </div>
-
-      <!-- Modelo Akari -->
-      <div class="card-3d" style="text-align: left;">
-        <h3 class="card-title-3d">Akari</h3>
-        <p class="card-text-3d">Nueva estudiante de la academia. (Próximamente)</p>
-        <button class="btn btn-disabled btn-icono" style="width: 100%; justify-content: flex-start;">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          Bloqueado
-        </button>
-      </div>
-
+<!-- Sección de Modelos -->
+<h2 class="texto-3d-neon" style="text-align: left; font-size: 1.8rem; margin-bottom: 1.5rem;">Modelos 3D</h2>
+<div class="grid-3" style="margin-bottom: 3rem;">
+  
+  <!-- Modelo Alexander -->
+  <div class="card-3d" style="text-align: left;">
+    <h3 class="card-title-3d">Alexander</h3>
+    <p class="card-text-3d">Ropa escolar / Hacker. (7.75 MB)</p>
+    
+    <div style="display: flex; gap: 10px; margin-top: 1rem;">
+      <button id="btn-desc-alex" class="btn btn-ghost btn-icono" style="flex: 1; justify-content: center; color: var(--cian); border-color: var(--cian); background: rgba(0, 245, 255, 0.1);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Descargar
+      </button>
+      <button id="btn-elim-alex" class="btn btn-ghost btn-icono" style="display: none; flex: 1; justify-content: center; color: var(--magenta); border-color: var(--magenta); background: rgba(255, 46, 151, 0.1);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        Eliminar
+      </button>
     </div>
+  </div>
 
+  <!-- Modelo Andrea -->
+  <div class="card-3d" style="text-align: left;">
+    <h3 class="card-title-3d">Andrea</h3>
+    <p class="card-text-3d">Ropa escolar / Secretaria. (9.51 MB)</p>
+    
+    <div style="display: flex; gap: 10px; margin-top: 1rem;">
+      <button id="btn-desc-andrea" class="btn btn-ghost btn-icono" style="flex: 1; justify-content: center; color: var(--cian); border-color: var(--cian); background: rgba(0, 245, 255, 0.1);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Descargar
+      </button>
+      <button id="btn-elim-andrea" class="btn btn-ghost btn-icono" style="display: none; flex: 1; justify-content: center; color: var(--magenta); border-color: var(--magenta); background: rgba(255, 46, 151, 0.1);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        Eliminar
+      </button>
+    </div>
+  </div>
+
+  <!-- Modelo Akari -->
+  <div class="card-3d" style="text-align: left;">
+    <h3 class="card-title-3d">Akari</h3>
+    <p class="card-text-3d"> estudiante de la academia. (Próximamente)</p>
+    <button class="btn btn-disabled btn-icono" style="width: 100%; justify-content: flex-start; margin-top: 1rem;">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      Bloqueado
+    </button>
+  </div>
+
+</div>
     <!-- Sección de Recursos Básicos -->
     <h2 class="texto-3d-neon" style="text-align: left; font-size: 1.8rem; margin-bottom: 1.5rem;">Recursos Básicos</h2>
     <div class="grid-3">
@@ -126,6 +139,7 @@
     <p>PAPIROMESA-UX RELEASE 1 YAMICODE.</p>
   </footer>
 
-  <script src="../js/cerebro.js"></script>
+    <script src="../js/cerebro.js"></script>
+  <script src="../js/sys_vestidores.js"></script>
 </body>
 </html>
