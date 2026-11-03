@@ -1,6 +1,6 @@
 // /// 1. IMPORTACIONES \\\
 import { _secAuth } from "./firebase.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 
 // /// 2. LÓGICA DE SESIÓN (solo botón del header) \\\
 onAuthStateChanged(_secAuth, (_sysUser) => {
