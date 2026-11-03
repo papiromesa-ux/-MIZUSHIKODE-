@@ -1,0 +1,71 @@
+/* /// TECLADO VIRTUAL PARA CÓDIGO \\\ */
+#teclado-virtual {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #0a0a12;
+  border-top: 2px solid var(--cian);
+  box-shadow: 0 -5px 20px rgba(0, 245, 255, 0.2);
+  padding: 10px;
+  z-index: 99999;
+  user-select: none;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.teclado-fila {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.tecla {
+  flex: 1;
+  background: #1a1a2e;
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 12px 0;
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s;
+  touch-action: manipulation;
+}
+
+.tecla:active {
+  background: var(--cian);
+  color: #000;
+  border-color: var(--cian);
+}
+
+.btn-borrar {
+  background: var(--magenta);
+  color: #fff;
+  flex: 2;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.teclado-codigo {
+  border-top: 1px dashed var(--borde);
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.teclado-codigo .tecla {
+  background: rgba(123, 44, 191, 0.2);
+  color: var(--cian);
+  border-color: rgba(123, 44, 191, 0.5);
+}
+
+/* Ajuste para que el input no quede tapado por el teclado */
+body {
+  padding-bottom: 300px; 
+}
