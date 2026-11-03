@@ -13,12 +13,13 @@
   --borde: rgba(252, 226, 5, 0.15); 
   --glow: 0 0 20px rgba(252, 226, 5, 0.3); 
 }
+
 /* /// 2. RESET Y FONDO (ESTILO ACADEMIA 3D) \\\ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Rajdhani', sans-serif;
-  background-color: #0d0d15; /* Un negro azulado profundo (más japonés/sobrio) */
+  background-color: #0d0d15; 
   color: var(--texto);
   line-height: 1.6;
   overflow-x: hidden;
@@ -41,12 +42,11 @@ body::before {
   transform-origin: bottom center;
   pointer-events: none;
   z-index: 0;
-  /* Hace que el piso se pierda en la oscuridad hacia el fondo */
   mask-image: linear-gradient(to top, black 10%, transparent 90%);
   -webkit-mask-image: linear-gradient(to top, black 10%, transparent 90%);
 }
 
-/* Un resplandor cenital (como la luz de un aula) */
+/* Un resplandor cenital */
 body::after {
   content: '';
   position: fixed;
@@ -58,27 +58,34 @@ body::after {
   pointer-events: none;
   z-index: 0;
 }
-/* /// 3. HEADER Y MENÚ HAMBURGUESA \\\ */
-.header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: rgba(10, 10, 18, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); }
+
+/* /// 3. HEADER Y MENÚ (ESCRITORIO) \\\ */
+.header { 
+  position: sticky; 
+  top: 0; 
+  z-index: 100; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 1rem 2rem; 
+  background: rgba(10, 10, 18, 0.85); 
+  backdrop-filter: blur(10px); 
+  border-bottom: 1px solid var(--borde); 
+}
 .logo { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: 2px; text-decoration: none; display: flex; align-items: center;}
 .logo-yami { color: var(--texto); text-shadow: 1px 1px 0 #000, 2px 2px 0 var(--cian); }
 .logo-code { color: var(--cian); text-shadow: 1px 1px 0 #000, 2px 2px 0 var(--violeta); }
 
-/* BOTÓN HAMBURGUESA (CSS PURO) */
 .menu-toggle { display: none; flex-direction: column; justify-content: space-around; width: 35px; height: 30px; background: transparent; border: none; cursor: pointer; z-index: 102; }
 .menu-toggle span { width: 100%; height: 3px; background: var(--cian); border-radius: 3px; transition: all 0.3s ease; box-shadow: 0 0 5px var(--cian); }
 .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 7px); }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -8px); }
 
-/* MENÚ DESPLEGABLE */
 .nav { display: flex; gap: 1.5rem; align-items: center; }
 .nav a { color: var(--texto); text-decoration: none; font-weight: 600; transition: color 0.2s; }
 .nav a:hover { color: var(--cian); }
-
-.nav-title { display: none; } /* Oculto en escritorio */
-.nav-divider { display: none; }
-.nav-btn { display: none; } /* Oculto en escritorio */
+.nav-title, .nav-divider, .nav-btn { display: none; }
 
 /* /// 4. HERO E INICIO \\\ */
 .hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; min-height: 80vh; }
@@ -96,6 +103,10 @@ body::after {
 .section { position: relative; z-index: 1; padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
 .section-title { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); text-align: center; margin-bottom: 0.5rem; }
 .section-sub { text-align: center; color: var(--texto-dim); margin-bottom: 2.5rem; }
+.page-header { text-align: center; padding: 4rem 2rem 2rem; position: relative; z-index: 1; }
+.page-title { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 5vw, 3rem); color: var(--texto); margin-bottom: 0.5rem; }
+.btn-nav { transition: all 0.3s ease; display: block; }
+.btn-nav:hover { background: rgba(0, 245, 255, 0.1); box-shadow: 0 0 15px rgba(0, 245, 255, 0.3); }
 
 /* /// 6. TARJETAS Y GRIDS \\\ */
 .grid-2, .grid-3, .grid-4 { display: grid; gap: 1.5rem; margin-top: 2rem; }
@@ -114,7 +125,7 @@ body::after {
 /* /// 7. AVATAR Y LOGIN \\\ */
 .hero-avatar { display: flex; justify-content: center; position: relative; }
 .avatar-box { width: 320px; height: 420px; background: linear-gradient(160deg, var(--bg-card), var(--bg-mid)); border: 1px solid var(--borde); border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--glow); }
-.avatar-face { font-size: 3rem; font-family: 'Orbitron', sans-serif; color: var(--cian); }
+.avatar-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; height: 350px; background: radial-gradient(circle, rgba(123, 44, 191, 0.4) 0%, transparent 70%); z-index: 0; pointer-events: none; animation: pulse 3s infinite alternate; }
 .avatar-name { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: var(--cian); margin-top: 0.5rem; }
 .login-container { max-width: 400px; margin: 80px auto; padding: 2rem; background: rgba(26, 26, 46, 0.6); border: 1px solid var(--cian); border-radius: 16px; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0, 245, 255, 0.1); text-align: center; }
 .form-group { margin-bottom: 1rem; text-align: left; }
@@ -122,7 +133,6 @@ body::after {
 .form-group input { width: 100%; padding: 0.8rem; background: #000; border: 1px solid var(--texto-dim); color: var(--texto); border-radius: 8px; outline: none; font-family: 'Rajdhani', sans-serif; font-size: 1rem; }
 .form-group input:focus { border-color: var(--cian); }
 .btn-google { background: #fff; color: #333; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 1rem; font-weight: bold; border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-.btn-google:hover { background: #ddd; }
 .toggle-text { margin-top: 1.5rem; color: var(--texto-dim); font-size: 0.9rem; }
 .toggle-text span { color: var(--magenta); cursor: pointer; font-weight: bold; }
 .mensaje { display: none; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-weight: bold; font-size: 0.9rem; }
@@ -140,18 +150,97 @@ body::after {
 .error { display: block; background: rgba(255, 46, 151, 0.1); color: var(--magenta); border: 1px solid var(--magenta); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-/* /// 9. MODALES Y MENÚ MÓVIL \\\ */
-.modal-overlay {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
-  z-index: 10000; display: flex; justify-content: center; align-items: center;
-  animation: fadeIn 0.3s ease;
-}
+/* /// 9. MODALES \\\ */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 10000; display: flex; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
 .modal-box { padding: 20px; border-radius: 12px; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes popIn { from { transform: scale(0.8); } to { transform: scale(1); } }
 
-/* /// 10. RESPONSIVE (EL ARREGLO DEL MENÚ) \\\ */
+/* /// 10. TEXTOS 3D Y TARJETAS 3D \\\ */
+.texto-3d {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-shadow: 
+    0px 3px 0px #3b1b5c, 
+    0px 5px 10px rgba(0,0,0,0.8),
+    0px 0px 15px rgba(0, 245, 255, 0.3);
+  margin-bottom: 1rem;
+}
+.texto-3d-neon {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  color: var(--cian);
+  text-align: center;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 0 #007a80, 2px 2px 0 #006066, 3px 3px 0 #00474d, 4px 4px 0 #002e33, 5px 5px 20px rgba(0, 245, 255, 0.6);
+}
+.btn-icono { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+.btn-icono svg { width: 20px; height: 20px; stroke: currentColor; }
+
+.card-3d { background: linear-gradient(145deg, #181824, #101018); border: 1px solid rgba(123, 44, 191, 0.3); border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+.card-3d:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(123, 44, 191, 0.4), inset 0 1px 0 rgba(255,255,255,0.1); border-color: rgba(123, 44, 191, 0.8); }
+.card-icon-3d { width: 70px; height: 70px; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; background: rgba(123, 44, 191, 0.1); border-radius: 50%; border: 1px solid rgba(123, 44, 191, 0.5); box-shadow: 0 0 15px rgba(123, 44, 191, 0.2), inset 0 0 10px rgba(123, 44, 191, 0.2); color: var(--cian); }
+.card-icon-3d svg { width: 35px; height: 35px; }
+.card-title-3d { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.8rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+.card-text-3d { color: var(--texto-dim); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+.card-btn-3d { display: inline-flex; align-items: center; gap: 8px; font-weight: bold; color: var(--cian); text-decoration: none; transition: color 0.2s; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; }
+.card-btn-3d:hover { color: #fff; text-shadow: 0 0 10px var(--cian); }
+
+/* /// 11. COLORES PERSONALIZADOS DE TARJETAS \\\ */
+.card-hackodeo { background: linear-gradient(135deg, rgba(150, 0, 24, 0.8), rgba(26, 26, 26, 0.9), rgba(128, 128, 128, 0.5)); border-color: #960018; }
+.card-hackodeo:hover { box-shadow: 0 0 20px rgba(150, 0, 24, 0.6); }
+.card-hackodeo .btn { background: linear-gradient(135deg, #960018, #808080); color: #fff; }
+.card-ciber { background: linear-gradient(135deg, rgba(0, 0, 128, 0.8), rgba(0, 77, 0, 0.8), rgba(255, 255, 255, 0.2)); border-color: #000080; }
+.card-ciber:hover { box-shadow: 0 0 20px rgba(0, 0, 128, 0.6); }
+.card-ciber .btn { background: linear-gradient(135deg, #000080, #004d00); color: #fff; }
+.card-gamercraft { background: linear-gradient(135deg, rgba(255, 94, 0, 0.8), rgba(224, 247, 250, 0.4), rgba(123, 44, 191, 0.8)); border-color: #ff5e00; }
+.card-gamercraft:hover { box-shadow: 0 0 20px rgba(255, 94, 0, 0.6); }
+.card-gamercraft .btn { background: linear-gradient(135deg, #ff5e00, #7b2cbf); color: #fff; }
+.card-apk-exe { background: linear-gradient(135deg, rgba(0, 255, 136, 0.6), rgba(0, 245, 255, 0.6), rgba(0, 0, 0, 0.9)); border-color: #00f5ff; }
+.card-apk-exe:hover { box-shadow: 0 0 20px rgba(0, 245, 255, 0.6); }
+.card-apk-exe .btn { background: linear-gradient(135deg, #00ff88, #00f5ff); color: #000; }
+.card-stores { background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 77, 0, 0.8), rgba(0, 0, 255, 0.8)); border-color: #0000ff; }
+.card-stores:hover { box-shadow: 0 0 20px rgba(0, 0, 255, 0.6); }
+.card-stores .btn { background: linear-gradient(135deg, #ffffff, #0000ff); color: #000; }
+.card-android { background: linear-gradient(135deg, rgba(164, 198, 57, 0.7), rgba(0, 0, 0, 0.9)); border-color: #a4c639; }
+.card-android:hover { box-shadow: 0 0 20px rgba(164, 198, 57, 0.6); }
+.card-android .btn { background: linear-gradient(135deg, #a4c639, #000000); color: #fff; }
+.card-linux { background: linear-gradient(135deg, rgba(255, 215, 0, 0.6), rgba(0, 0, 0, 0.9), rgba(0, 245, 255, 0.6)); border-color: #ffd700; }
+.card-linux:hover { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+.card-linux .btn { background: linear-gradient(135deg, #ffd700, #00f5ff); color: #000; }
+
+/* /// 12. PARCHES ADICIONALES (JS, JUEGOS, ALERTAS) \\\ */
+.premium-glass { background: rgba(10, 10, 18, 0.6) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 245, 255, 0.2) !important; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); }
+.locked-module { opacity: 0.5; filter: grayscale(0.8); pointer-events: none; user-select: none; }
+.progress-box { background: #000; border: 1px solid var(--borde); border-radius: 999px; overflow: hidden; }
+.texto-bloqueo { color: var(--texto-dim); font-size: 0.8rem; font-family: monospace; }
+.game-card { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.game-icon { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--cian); margin-bottom: 1rem; text-shadow: 0 0 10px rgba(0, 245, 255, 0.5); }
+.game-stats { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--texto-dim); margin: 1rem 0; font-family: monospace; border-top: 1px dashed var(--borde); padding-top: 0.5rem; }
+.btn-disabled { background: rgba(255, 255, 255, 0.05); color: var(--texto-dim); cursor: not-allowed; box-shadow: none; border: 1px solid transparent; }
+.border-cian { border-color: var(--cian) !important; }
+.border-magenta { border-color: var(--magenta) !important; }
+.badge-magenta { background: rgba(255, 46, 151, 0.1) !important; color: var(--magenta) !important; border-color: rgba(255, 46, 151, 0.3) !important; }
+.btn-magenta { background: linear-gradient(135deg, var(--magenta), var(--violeta)) !important; color: #fff !important; }
+
+.dc-alerta-trampa { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 500px; background: #0a0a12; border: 2px solid var(--magenta); border-radius: 12px; box-shadow: 0 0 30px rgba(255, 46, 151, 0.4); z-index: 99999; overflow: hidden; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.dc-alerta-cuerpo { padding: 15px 20px; display: flex; flex-direction: column; gap: 5px; }
+.dc-alerta-cuerpo strong { color: var(--magenta); font-family: 'Orbitron', sans-serif; font-size: 1.1rem; }
+.dc-alerta-cuerpo span { color: var(--texto); font-size: 0.9rem; }
+.dc-alerta-barra { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); }
+.dc-alerta-barra i { display: block; height: 100%; width: 100%; background: var(--magenta); transform-origin: left; }
+.dc-alerta-barra i.corre { animation: cuenta-regresiva linear forwards; }
+@keyframes cuenta-regresiva { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+.dc-alerta-trampa[data-estado="ok"] { border-color: #00ff88; box-shadow: 0 0 30px rgba(0, 255, 136, 0.4); }
+.dc-alerta-trampa[data-estado="ok"] strong { color: #00ff88; }
+.dc-alerta-trampa[data-estado="ok"] .dc-alerta-barra { display: none; }
+body.en-examen { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+
+/* /// 13. RESPONSIVE (EL ARREGLO DEL MENÚ MÓVIL) \\\ */
 @media (max-width: 768px) {
   .menu-toggle { display: flex; }
   
@@ -160,7 +249,9 @@ body::after {
     position: absolute; top: 100%; left: 0; width: 100%;
     background: rgba(10, 10, 18, 0.98); backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--cian); padding: 10px 20px 20px;
-    transform: scaleY(0); transform-origin: top; transition: transform 0.3s ease;
+    transform: scaleY(0); 
+    transform-origin: top; 
+    transition: transform 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 245, 255, 0.15);
     z-index: 101;
   }
@@ -182,366 +273,4 @@ body::after {
   .hero { grid-template-columns: 1fr; text-align: center; padding: 3rem 1.2rem; }
   .hero-btns { justify-content: center; }
   .avatar-box { margin: 0 auto; }
-}
-
-/* /// 12. COLORES PERSONALIZADOS DE TARJETAS \\\ */
-
-/* Hackodeo: Rojo Carmesí, Negro Carbón, Gris */
-.card-hackodeo {
-  background: linear-gradient(135deg, rgba(150, 0, 24, 0.8), rgba(26, 26, 26, 0.9), rgba(128, 128, 128, 0.5));
-  border-color: #960018;
-}
-.card-hackodeo:hover { box-shadow: 0 0 20px rgba(150, 0, 24, 0.6); }
-.card-hackodeo .btn { background: linear-gradient(135deg, #960018, #808080); color: #fff; }
-
-/* Ciberseguridad: Azul Marino, Verde Oscuro, Blanco */
-.card-ciber {
-  background: linear-gradient(135deg, rgba(0, 0, 128, 0.8), rgba(0, 77, 0, 0.8), rgba(255, 255, 255, 0.2));
-  border-color: #000080;
-}
-.card-ciber:hover { box-shadow: 0 0 20px rgba(0, 0, 128, 0.6); }
-.card-ciber .btn { background: linear-gradient(135deg, #000080, #004d00); color: #fff; }
-
-/* Gamercraft: Naranja Vibrante, Amarillo Cielo, Violeta */
-.card-gamercraft {
-  background: linear-gradient(135deg, rgba(255, 94, 0, 0.8), rgba(224, 247, 250, 0.4), rgba(123, 44, 191, 0.8));
-  border-color: #ff5e00;
-}
-.card-gamercraft:hover { box-shadow: 0 0 20px rgba(255, 94, 0, 0.6); }
-.card-gamercraft .btn { background: linear-gradient(135deg, #ff5e00, #7b2cbf); color: #fff; }
-
-/* APK y EXE: Verde Claro, Celeste, Negro */
-.card-apk-exe {
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.6), rgba(0, 245, 255, 0.6), rgba(0, 0, 0, 0.9));
-  border-color: #00f5ff;
-}
-.card-apk-exe:hover { box-shadow: 0 0 20px rgba(0, 245, 255, 0.6); }
-.card-apk-exe .btn { background: linear-gradient(135deg, #00ff88, #00f5ff); color: #000; }
-
-/* PlayStore y Windows Store: Blanco, Verde Oscuro, Azul */
-.card-stores {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 77, 0, 0.8), rgba(0, 0, 255, 0.8));
-  border-color: #0000ff;
-}
-.card-stores:hover { box-shadow: 0 0 20px rgba(0, 0, 255, 0.6); }
-.card-stores .btn { background: linear-gradient(135deg, #ffffff, #0000ff); color: #000; }
-
-/* Software Móvil (Colores de Android) */
-.card-android {
-  background: linear-gradient(135deg, rgba(164, 198, 57, 0.7), rgba(0, 0, 0, 0.9));
-  border-color: #a4c639;
-}
-.card-android:hover { box-shadow: 0 0 20px rgba(164, 198, 57, 0.6); }
-.card-android .btn { background: linear-gradient(135deg, #a4c639, #000000); color: #fff; }
-
-/* Software Computer (Colores de Linux/Monitor) */
-.card-linux {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.6), rgba(0, 0, 0, 0.9), rgba(0, 245, 255, 0.6));
-  border-color: #ffd700;
-}
-.card-linux:hover { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
-.card-linux .btn { background: linear-gradient(135deg, #ffd700, #00f5ff); color: #000; }
-
-/* /// 13. PARCHE DE ESTILOS FALTANTES (RELEASE 1) \\\ */
-
-/* --- Encabezados de Página (Aula, Labs, Apps, etc.) --- */
-.page-header {
-  text-align: center;
-  padding: 4rem 2rem 2rem;
-  position: relative;
-  z-index: 1;
-}
-.page-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--texto);
-  margin-bottom: 0.5rem;
-}
-.btn-nav {
-  transition: all 0.3s ease;
-  display: block;
-}
-.btn-nav:hover {
-  background: rgba(0, 245, 255, 0.1);
-  box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
-}
-
-/* --- Efectos Visuales (Premium Glass y Glow) --- */
-.premium-glass {
-  background: rgba(10, 10, 18, 0.6) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 245, 255, 0.2) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-}
-.avatar-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(123, 44, 191, 0.4) 0%, transparent 70%);
-  z-index: 0;
-  pointer-events: none;
-  animation: pulse 3s infinite alternate;
-}
-
-/* --- Tarjetas y Módulos Bloqueados (js.html) --- */
-.locked-module {
-  opacity: 0.5;
-  filter: grayscale(0.8);
-  pointer-events: none;
-  user-select: none;
-}
-.progress-box {
-  background: #000;
-  border: 1px solid var(--borde);
-  border-radius: 999px;
-  overflow: hidden;
-}
-.texto-bloqueo {
-  color: var(--texto-dim);
-  font-size: 0.8rem;
-  font-family: monospace;
-}
-
-/* --- Minijuegos (juegos.html) --- */
-.game-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.game-icon {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  color: var(--cian);
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
-}
-.game-stats {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  color: var(--texto-dim);
-  margin: 1rem 0;
-  font-family: monospace;
-  border-top: 1px dashed var(--borde);
-  padding-top: 0.5rem;
-}
-.btn-disabled {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--texto-dim);
-  cursor: not-allowed;
-  box-shadow: none;
-  border: 1px solid transparent;
-}
-
-/* --- Colores Auxiliares (Bordes y Botones) --- */
-.border-cian { border-color: var(--cian) !important; }
-.border-magenta { border-color: var(--magenta) !important; }
-.badge-magenta { background: rgba(255, 46, 151, 0.1) !important; color: var(--magenta) !important; border-color: rgba(255, 46, 151, 0.3) !important; }
-.btn-magenta { background: linear-gradient(135deg, var(--magenta), var(--violeta)) !important; color: #fff !important; }
-
-/* --- Alerta Anti-Trampas (sys_antitrampas.js) --- */
-.dc-alerta-trampa {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 500px;
-  background: #0a0a12;
-  border: 2px solid var(--magenta);
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(255, 46, 151, 0.4);
-  z-index: 99999;
-  overflow: hidden;
-  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.dc-alerta-cuerpo {
-  padding: 15px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.dc-alerta-cuerpo strong {
-  color: var(--magenta);
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
-}
-.dc-alerta-cuerpo span {
-  color: var(--texto);
-  font-size: 0.9rem;
-}
-.dc-alerta-barra {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-}
-.dc-alerta-barra i {
-  display: block;
-  height: 100%;
-  width: 100%;
-  background: var(--magenta);
-  transform-origin: left;
-}
-.dc-alerta-barra i.corre {
-  animation: cuenta-regresiva linear forwards;
-}
-@keyframes cuenta-regresiva {
-  from { transform: scaleX(1); }
-  to { transform: scaleX(0); }
-}
-.dc-alerta-trampa[data-estado="ok"] {
-  border-color: #00ff88;
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-}
-.dc-alerta-trampa[data-estado="ok"] strong { color: #00ff88; }
-.dc-alerta-trampa[data-estado="ok"] .dc-alerta-barra { display: none; }
-
-/* --- Seguridad Visual en Modo Examen --- */
-body.en-examen {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-/* /// 15. TEXTOS 3D Y SIMETRÍA (ACADEMIA JAPONESA) \\\ */
-
-/* Efecto base para títulos principales */
-.texto-3d {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  color: #ffffff;
-  text-align: center; /* Simetría total */
-  letter-spacing: 3px; /* Separación entre letras */
-  line-height: 1.2;
-  /* El truco del 3D: sombras múltiples para simular profundidad */
-  text-shadow: 
-    1px 1px 0 #a1a1b0,
-    2px 2px 0 #9a9ab0,
-    3px 3px 0 #8a8a9a,
-    4px 4px 0 #7a7a8a,
-    5px 5px 15px rgba(0, 0, 0, 0.8);
-  margin-bottom: 1rem;
-}
-
-/* Variante con color neón (para títulos específicos) */
-.texto-3d-neon {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  color: var(--cian);
-  text-align: center;
-  letter-spacing: 3px;
-  text-shadow: 
-    1px 1px 0 #007a80,
-    2px 2px 0 #006066,
-    3px 3px 0 #00474d,
-    4px 4px 0 #002e33,
-    5px 5px 20px rgba(0, 245, 255, 0.6);
-}
-
-/* El estilo para los botones que llevarán iconos */
-.btn-icono {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; /* Espacio entre el icono y el texto */
-  text-decoration: none;
-}
-
-/* Ajuste para que los iconos SVG dentro de los botones se vean bien */
-.btn-icono svg {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-}
-
-/* /// 16. TARJETAS 3D (DISTRITOS Y CLUBS) \\\ */
-.card-3d {
-  background: linear-gradient(145deg, #181824, #101018);
-  border: 1px solid rgba(123, 44, 191, 0.3);
-  border-radius: 12px;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-  position: relative;
-  overflow: hidden;
-}
-
-.card-3d:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(123, 44, 191, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-  border-color: rgba(123, 44, 191, 0.8);
-}
-
-.card-icon-3d {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 1.5rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(123, 44, 191, 0.1);
-  border-radius: 50%;
-  border: 1px solid rgba(123, 44, 191, 0.5);
-  box-shadow: 0 0 15px rgba(123, 44, 191, 0.2), inset 0 0 10px rgba(123, 44, 191, 0.2);
-  color: var(--cian);
-}
-
-.card-icon-3d svg {
-  width: 35px;
-  height: 35px;
-}
-
-.card-title-3d {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.3rem;
-  color: #fff;
-  margin-bottom: 0.8rem;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-}
-
-.card-text-3d {
-  color: var(--texto-dim);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
-
-.card-btn-3d {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: bold;
-  color: var(--cian);
-  text-decoration: none;
-  transition: color 0.2s;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1.1rem;
-}
-
-.card-btn-3d:hover {
-  color: #fff;
-  text-shadow: 0 0 10px var(--cian);
-}
-
-/* /// 15. TEXTOS 3D Y SIMETRÍA (ACADEMIA JAPONESA) \\\ */
-.texto-3d {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  color: #ffffff;
-  text-align: center;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  /* Sombra más limpia y estilizada */
-  text-shadow: 
-    0px 3px 0px #3b1b5c, 
-    0px 5px 10px rgba(0,0,0,0.8),
-    0px 0px 15px rgba(0, 245, 255, 0.3);
-  margin-bottom: 1rem;
 }
