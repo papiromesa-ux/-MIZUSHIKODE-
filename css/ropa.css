@@ -244,17 +244,18 @@ body.en-examen { user-select: none; -webkit-user-select: none; -moz-user-select:
 @media (max-width: 768px) {
   .menu-toggle { display: flex; }
   
-  .nav {
-    display: flex; flex-direction: column; align-items: stretch;
-    position: absolute; top: 100%; left: 0; width: 100%;
-    background: rgba(10, 10, 18, 0.98); backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--cian); padding: 10px 20px 20px;
-    transform: scaleY(0); 
-    transform-origin: top; 
-    transition: transform 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.15);
-    z-index: 101;
-  }
+.nav {
+  display: flex; flex-direction: column; align-items: stretch;
+  position: absolute; top: 100%; left: 0; width: 100%;
+  
+  /* LA SOLUCIÓN: Fondo 100% sólido y Z-index por las nubes */
+  background: #0a0a12 !important; 
+  border-bottom: 2px solid var(--cian); 
+  padding: 10px 20px 20px;
+  transform: scaleY(0); transform-origin: top; transition: transform 0.3s ease;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 1);
+  z-index: 9999 !important;
+}
   .nav.active { transform: scaleY(1); }
   
   .nav a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
