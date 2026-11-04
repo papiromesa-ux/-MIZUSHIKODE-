@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ongaku-R3';
+const CACHE_NAME = 'ongaku-R4';
 const ASSETS = [
   './pages/musica.html',
   './css/ropa.css',
