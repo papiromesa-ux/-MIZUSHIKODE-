@@ -3,56 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aula de JavaScript - &lt;YamiCode&gt;</title>
+  <title>Aula de JavaScript - &lt;MizushiKode&gt;</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/ropa.css">
 </head>
 <body>
   
   <header class="header">
-  <a href="../index.html" class="logo">
-    <span class="logo-yami">&lt;YAMI</span><span class="logo-code">CODE&gt;</span>
-  </a>
-  
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-  <nav class="nav" id="nav">
-    <div class="nav-title">SISTEMA</div>
-    <a href="../index.html">Inicio</a>
-    <a href="aula.html">Desarrollo Web</a>
-    <a href="apps.html">Creación de Aplicaciones</a>
-    <a href="labs.html">Especialidades</a>
-    <a href="juegos.html">Juegos</a>
-    
-    <div class="nav-divider"></div>
-    
-    <div class="nav-title">HERRAMIENTAS</div>
-    <a href="../index.html#descargas">Descargas</a>
-    <a href="../index.html#reportes">Reportes</a>
-
-    <div class="nav-divider"></div>
-    
-    <a href="login.html" class="btn-nav" style="text-align: center; margin-top: 10px; border: 1px solid var(--cian); padding: 8px; border-radius: 6px; color: var(--cian) !important;">Iniciar Sesión</a>
-  </nav>
-</header>
+    <a href="../index.html" class="logo">
+      <span class="logo-yami">&lt;MIZUSHI</span><span class="logo-code">KODE&gt;</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <div class="nav-title">ACADEMIA</div>
+      <a href="../index.html">Inicio</a>
+      <a href="aula.html" style="color: var(--cian);">Aulas</a>
+      <a href="labs.html">Clubs</a>
+      <div class="nav-divider"></div>
+      <div class="nav-title">HERRAMIENTAS</div>
+      <a href="vestidores.html">Vestidores</a>
+      <a href="buzon.html">Buzón</a>
+      <div class="nav-divider"></div>
+      <a href="login.html" class="btn-nav" style="text-align: center; justify-content: center; border: 1px solid var(--cian); padding: 10px; border-radius: 6px; color: var(--cian) !important; background: rgba(0, 245, 255, 0.05);">Iniciar Sesión</a>
+    </nav>
+  </header>
 
   <main>
-    <header class="page-header">
-      <h1 class="page-title">Aula de <span class="neon">JavaScript</span></h1>
-      <p class="section-sub">Inicia tu camino para convertirte en Desarrollador Web.</p>
+    <header class="page-header" style="padding-top: 2rem; padding-bottom: 1rem;">
+      <h1 class="texto-3d" style="font-size: 2.5rem; margin-bottom: 0.5rem;">&lt;Aula de&gt; JAVASCRIPT</h1>
+      <p class="section-sub" style="text-align: center; color: var(--texto-dim);">Inicia tu camino para convertirte en Desarrollador Web.</p>
     </header>
 
     <section class="section">
-      <div class="banner-box premium-glass" style="height: auto; min-height: 250px; padding: 2rem; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <div class="banner-content" style="width: 100%; max-width: 600px;">
+      <div class="banner-box premium-glass" style="height: auto; min-height: 250px; padding: 2rem; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 12px;">
+        <div class="banner-content" style="width: 100%; max-width: 600px; text-align: center;">
           <span class="card-badge">Aula activa</span>
-          <h2>Bienvenido al Núcleo</h2>
-          <p>Completa las misiones para desbloquear nuevos módulos.</p>
-          <div class="progress-box" style="margin-top: 1.5rem; width: 100%;">
+          <h2 class="texto-3d" style="font-size: 1.5rem;">Bienvenido al Núcleo</h2>
+          <p style="color: var(--texto-dim); margin-bottom: 1.5rem;">Completa las misiones para desbloquear nuevos módulos.</p>
+          
+          <div class="progress-box" style="width: 100%;">
             <div class="progress-label" style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--texto-dim); font-size: 0.9rem;">
               <span>Progreso general</span>
               <span id="progresoGeneral">0%</span>
@@ -64,36 +55,40 @@
         </div>
       </div>
 
-      <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Mapa de Misiones</h2>
+      <h2 class="texto-3d-neon" style="text-align: left; margin-bottom: 1.5rem; font-size: 1.8rem;">Mapa de Misiones</h2>
       
       <div class="grid-3">
-        <div class="card premium-glass" style="border-left: 4px solid var(--cian);">
+        <div class="card-3d" style="border-left: 4px solid var(--cian);">
           <div class="card-badge" style="background: rgba(0, 245, 255, 0.2);">Módulo 01</div>
-          <h3>El mapa de la Web</h3>
-          <p>Aprende cómo funciona internet y la estructura básica de una página.</p>
+          <h3 class="card-title-3d" style="text-align: left;">El mapa de la Web</h3>
+          <p class="card-text-3d" style="text-align: left;">Aprende cómo funciona internet y la estructura básica de una página.</p>
+          
           <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
             <span id="progresoModulo1" style="font-family: monospace; color: var(--texto-dim); font-size: 0.8rem;">0/3 Lecciones</span>
-            <a href="leccion1.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Iniciar</a>
+            <!-- ENLACE CORREGIDO: Ahora va al mapa nuevo de clases -->
+            <a href="curso-html.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Iniciar</a>
           </div>
         </div>
 
-        <div id="modulo2" class="card premium-glass locked-module">
+        <div id="modulo2" class="card-3d locked-module">
           <div class="card-badge" style="background: rgba(255, 255, 255, 0.1); color: var(--texto-dim);">Bloqueado</div>
-          <h3>El taller del desarrollador</h3>
-          <p>Configura tu entorno y prepara tus herramientas de trabajo.</p>
+          <h3 class="card-title-3d" style="text-align: left;">El taller del desarrollador</h3>
+          <p class="card-text-3d" style="text-align: left;">Configura tu entorno y prepara tus herramientas de trabajo.</p>
+          
           <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
-            <span class="texto-bloqueo" style="font-family: monospace; color: var(--texto-dim); font-size: 0.8rem;">Completa el Módulo 1</span>
-            <button class="btn btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.9rem; cursor: not-allowed;" disabled>[X]</button>
+            <span class="texto-bloqueo">Completa el Módulo 1</span>
+            <button class="btn btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.9rem; cursor: not-allowed;" disabled>Bloqueado</button>
           </div>
         </div>
 
-        <div class="card premium-glass locked-module">
+        <div class="card-3d locked-module">
           <div class="card-badge" style="background: rgba(255, 255, 255, 0.1); color: var(--texto-dim);">Bloqueado</div>
-          <h3>Los cimientos HTML</h3>
-          <p>Construye la estructura base de cualquier sitio web.</p>
+          <h3 class="card-title-3d" style="text-align: left;">Los cimientos HTML</h3>
+          <p class="card-text-3d" style="text-align: left;">Construye la estructura base de cualquier sitio web.</p>
+          
           <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
             <span style="font-family: monospace; color: var(--texto-dim); font-size: 0.8rem;">Completa el Módulo 2</span>
-            <button class="btn btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.9rem; cursor: not-allowed;" disabled>[X]</button>
+            <button class="btn btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.9rem; cursor: not-allowed;" disabled>Bloqueado</button>
           </div>
         </div>
       </div>
@@ -101,8 +96,8 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-logo"><span class="logo-yami">YAMI</span><span class="logo-code">CODE</span></div>
-    <p>PAPIROMESA-UX RELEASE 1 YAMICODE.</p>
+    <div class="footer-logo"><span class="logo-yami">MIZUSHI</span><span class="logo-code">KODE</span></div>
+    <p>PAPIROMESA-UX RELEASE 1 MIZUSHIKODE.</p>
   </footer>
   
   <script src="../js/cerebro.js"></script>
