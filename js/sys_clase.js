@@ -1,3 +1,24 @@
+import { _secAuth } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import { crearAntiTrampas } from "./sys_antitrampas.js";
+
+// 1. Seguridad de sesión (Si no hay usuario, patada al login)
+onAuthStateChanged(_secAuth, (_u) => {
+  if (!_u) window.location.replace("login.html");
+});
+
+// 2. Iniciar el Anti-Trampas (Modo EstrICTO)
+const _anti = crearAntiTrampas({
+  alExpulsar: ({ motivo }) => {
+    // Redirección directa a la pantalla de bloqueo
+    window.location.href = `bloqueo.html?motivo=${encodeURIComponent(motivo)}`;
+  }
+});
+
+// 3. Activar el anti-trampas
+document.body.classList.add('en-examen');
+_anti.activar();
+
 document.addEventListener('DOMContentLoaded', () => {
   let faseActual = 1;
   let vidas = 3;
@@ -78,8 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (esCorrecto) {
       if (faseActual === 5) {
-        // GUARDAR PROGRESO
+        // GUARDAR PROGRESO Y DESACTIVAR ANTI-TRAMPA
         localStorage.setItem('mizushi_html_clase1', 'true');
+        _anti.desactivar(); // <--- IMPORTANTE: Apagamos el anti-trampas al terminar
         
         btnSiguiente.innerHTML = `Volver al Mapa <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>`;
         btnSiguiente.onclick = () => window.location.href = 'curso-html.html';
