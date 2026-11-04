@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- REPRODUCTOR PEQUEÑO ---
+  // --- REPRODUCTOR PEQUEÑO Y GRANDE ---
   const audio = document.getElementById('audio-player');
   const btnPlay = document.getElementById('btn-play');
   const iconPlay = document.getElementById('icon-play');
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressFill = document.getElementById('progress-fill');
   const buscador = document.getElementById('buscador');
 
-  // --- REPRODUCTOR GRANDE ---
   const deezerPlayer = document.querySelector('.deezer-player');
   const fullPlayer = document.getElementById('full-player');
   const btnCloseFull = document.getElementById('btn-close-full');
@@ -38,10 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPrevFull = document.getElementById('btn-prev-full');
   const btnNextFull = document.getElementById('btn-next-full');
 
+  // Botones de acción
+  const btnHeart = document.getElementById('btn-heart');
+  const btnHeartFull = document.getElementById('btn-heart-full');
+  const btnShuffle = document.getElementById('btn-shuffle');
+  const btnRepeat = document.getElementById('btn-repeat');
+
   let currentTrackIndex = 0;
   let isPlaying = false;
+  let isShuffle = false;
+  let isRepeat = false;
 
-  // Base de datos (17 reales + relleno)
+  // Cargar Favoritos guardados en el celular
+  let favoritos = JSON.parse(localStorage.getItem('ongaku_favs')) || [];
+
+  // Base de datos de canciones
   const canciones = [
     { titulo: "MizushiKode (Himno Oficial)", src: "../musicaly/mizushikode.mp3" },
     { titulo: "Aeroe", src: "../musicaly/aeroe.mp3" },
@@ -61,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const artista = "ONGAKU Lofi";
 
-  // Formatear tiempo (ej: 3:45)
+  // --- FUNCIONES DE TIEMPO Y UI ---
   function formatearTiempo(segundos) {
     if (isNaN(segundos)) return "0:00";
     const min = Math.floor(segundos / 60);
@@ -69,6 +79,44 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${min}:${seg < 10 ? '0' : ''}${seg}`;
   }
 
+  function actualizarCorazones(tituloCancion) {
+    const esFav = favoritos.includes(tituloCancion);
+    if (esFav) {
+      btnHeart.classList.add('active');
+      btnHeartFull.classList.add('active');
+    } else {
+      btnHeart.classList.remove('active');
+      btnHeartFull.classList.remove('active');
+    }
+  }
+
+  // --- LÓGICA DE FAVORITOS ---
+  function toggleFavorito() {
+    const cancionActual = canciones[currentTrackIndex].titulo;
+    if (favoritos.includes(cancionActual)) {
+      favoritos = favoritos.filter(t => t !== cancionActual);
+    } else {
+      favoritos.push(cancionActual);
+    }
+    localStorage.setItem('ongaku_favs', JSON.stringify(favoritos));
+    actualizarCorazones(cancionActual);
+  }
+
+  btnHeart.addEventListener('click', toggleFavorito);
+  btnHeartFull.addEventListener('click', toggleFavorito);
+
+  // --- LÓGICA DE ALEATORIO Y REPETIR ---
+  btnShuffle.addEventListener('click', () => {
+    isShuffle = !isShuffle;
+    btnShuffle.classList.toggle('active', isShuffle);
+  });
+
+  btnRepeat.addEventListener('click', () => {
+    isRepeat = !isRepeat;
+    btnRepeat.classList.toggle('active', isRepeat);
+  });
+
+  // --- REPRODUCCIÓN ---
   function renderizarLista(listaParaMostrar = canciones) {
     listaContainer.innerHTML = '';
     if (listaParaMostrar.length === 0) {
@@ -98,34 +146,27 @@ document.addEventListener('DOMContentLoaded', () => {
   buscador.addEventListener('input', (e) => {
     const texto = e.target.value.toLowerCase().trim();
     const resultados = canciones.filter(c => c.titulo.toLowerCase().includes(texto));
-    
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelector('.nav-item[data-tab="tab-favoritos"]').classList.add('active');
     document.getElementById('tab-favoritos').classList.add('active');
-
     const tituloLista = document.querySelector('#tab-favoritos .deezer-title');
     tituloLista.textContent = texto ? `Resultados: "${texto}"` : "Todas las Canciones";
-
     renderizarLista(resultados);
   });
 
-  // Cargar canción
   function cargarCancion(index) {
     currentTrackIndex = index;
     const cancion = canciones[currentTrackIndex];
-    
     audio.src = cancion.src;
     
-    // Actualizar reproductor pequeño
     trackTitle.textContent = cancion.titulo;
     trackArtist.textContent = artista;
-    
-    // Actualizar reproductor grande
     fullTrackTitle.textContent = cancion.titulo;
     fullTrackArtist.textContent = artista;
 
-    // Resaltar en lista
+    actualizarCorazones(cancion.titulo);
+
     document.querySelectorAll('.cancion-item').forEach((el) => {
       const titleText = el.querySelector('.title').textContent;
       if (titleText === cancion.titulo) el.classList.add('activa');
@@ -154,24 +195,14 @@ document.addEventListener('DOMContentLoaded', () => {
     else reproducir();
   }
 
-  // --- EVENTOS DEL REPRODUCTOR ---
-  btnPlay.addEventListener('click', togglePlay);
-  btnPlayFull.addEventListener('click', togglePlay);
-  
-  // Abrir reproductor grande al tocar la barra rosa
-  deezerPlayer.addEventListener('click', (e) => {
-    if (e.target.closest('button')) return; // Si toca un botón, no abrir
-    fullPlayer.classList.add('active');
-  });
-
-  // Cerrar reproductor grande
-  btnCloseFull.addEventListener('click', () => {
-    fullPlayer.classList.remove('active');
-  });
-
-  // Siguiente y Anterior
   function siguienteCancion() {
-    currentTrackIndex = (currentTrackIndex + 1) % canciones.length;
+    if (isShuffle) {
+      // Reproducir una canción al azar
+      currentTrackIndex = Math.floor(Math.random() * canciones.length);
+    } else {
+      // Reproducir la siguiente en orden
+      currentTrackIndex = (currentTrackIndex + 1) % canciones.length;
+    }
     cargarCancion(currentTrackIndex);
     if (isPlaying) reproducir();
   }
@@ -182,17 +213,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isPlaying) reproducir();
   }
 
+  // --- EVENTOS ---
+  btnPlay.addEventListener('click', togglePlay);
+  btnPlayFull.addEventListener('click', togglePlay);
   btnNextFull.addEventListener('click', siguienteCancion);
   btnPrevFull.addEventListener('click', anteriorCancion);
-  
-  audio.addEventListener('ended', siguienteCancion);
 
-  // Actualizar barras de progreso y tiempos
+  deezerPlayer.addEventListener('click', (e) => {
+    if (e.target.closest('button')) return;
+    fullPlayer.classList.add('active');
+  });
+
+  btnCloseFull.addEventListener('click', () => {
+    fullPlayer.classList.remove('active');
+  });
+
+  // Lógica cuando termina una canción
+  audio.addEventListener('ended', () => {
+    if (isRepeat) {
+      audio.currentTime = 0;
+      audio.play();
+    } else {
+      siguienteCancion();
+    }
+  });
+
   audio.addEventListener('timeupdate', () => {
     const porcentaje = (audio.currentTime / audio.duration) * 100;
     progressFill.style.width = `${porcentaje || 0}%`;
     fullProgressFill.style.width = `${porcentaje || 0}%`;
-    
     fullTimeCurrent.textContent = formatearTiempo(audio.currentTime);
   });
 
