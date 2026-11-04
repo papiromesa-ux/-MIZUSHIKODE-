@@ -378,3 +378,14 @@ body.deezer-body {
   color: #ff2e97;
 }
 .full-player-controls .btn-play-main svg { width: 40px; height: 40px; margin-left: 4px; }
+
+/* /// ESTADOS ACTIVOS (Favoritos, Shuffle, Repeat) \\\ */
+.btn-heart.active svg {
+  fill: #ff2e97;
+  stroke: #ff2e97;
+}
+
+.btn-control.active {
+  color: #ff2e97;
+  text-shadow: 0 0 10px #ff2e97;
+}
