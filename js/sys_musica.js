@@ -22,11 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const trackArtist = document.getElementById('track-artist');
   const listaContainer = document.getElementById('lista-canciones');
   const progressFill = document.getElementById('progress-fill');
+  const buscador = document.getElementById('buscador');
 
   let currentTrackIndex = 0;
   let isPlaying = false;
 
-  // Canciones reales
+  // Base de datos de canciones (17 reales + relleno de prueba)
   const canciones = [
     { titulo: "MizushiKode (Himno Oficial)", src: "../musicaly/mizushikode.mp3" },
     { titulo: "Aeroe", src: "../musicaly/aeroe.mp3" },
@@ -44,33 +45,69 @@ document.addEventListener('DOMContentLoaded', () => {
   canciones.push({ titulo: "Violin Sad 1", src: "../musicaly/violinsad1.mp3" });
   canciones.push({ titulo: "Violin Sad 2", src: "../musicaly/violinsad2.mp3" });
 
-  // Relleno para simular 100 canciones
   for (let i = 1; i <= 80; i++) {
     canciones.push({ titulo: `Pista de Estudio #${i}`, src: "../musicaly/mizushikode.mp3" });
   }
 
   const artista = "ONGAKU Lofi";
 
-  function renderizarLista() {
+  // Función para renderizar la lista (ahora acepta un filtro)
+  function renderizarLista(listaParaMostrar = canciones) {
     listaContainer.innerHTML = '';
-    canciones.forEach((cancion, index) => {
+    
+    if (listaParaMostrar.length === 0) {
+      listaContainer.innerHTML = '<p style="color: var(--texto-dim); text-align: center; margin-top: 20px;">No se encontraron canciones.</p>';
+      return;
+    }
+
+    listaParaMostrar.forEach((cancion) => {
+      // Buscamos el índice original para que al hacer clic se reproduzca la canción correcta
+      const indexOriginal = canciones.findIndex(c => c.titulo === cancion.titulo);
+      
       const li = document.createElement('li');
-      li.className = `cancion-item ${index === currentTrackIndex ? 'activa' : ''}`;
+      li.className = `cancion-item ${indexOriginal === currentTrackIndex ? 'activa' : ''}`;
       li.innerHTML = `
-        <div class="track-num">${index + 1}</div>
+        <div class="track-num">${indexOriginal + 1}</div>
         <div class="track-name">
           <span class="title">${cancion.titulo}</span>
           <span class="artist">${artista}</span>
         </div>
       `;
       li.addEventListener('click', () => {
-        cargarCancion(index);
+        cargarCancion(indexOriginal);
         reproducir();
       });
       listaContainer.appendChild(li);
     });
   }
 
+  // --- LÓGICA DEL BUSCADOR ---
+  buscador.addEventListener('input', (e) => {
+    const texto = e.target.value.toLowerCase().trim();
+    
+    // Filtrar canciones
+    const resultados = canciones.filter(c => c.titulo.toLowerCase().includes(texto));
+    
+    // Cambiar automáticamente a la pestaña de la lista (Favoritos/Biblioteca)
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    
+    const tabFavoritosBtn = document.querySelector('.nav-item[data-tab="tab-favoritos"]');
+    if (tabFavoritosBtn) tabFavoritosBtn.classList.add('active');
+    document.getElementById('tab-favoritos').classList.add('active');
+
+    // Actualizar el título de la pestaña
+    const tituloLista = document.querySelector('#tab-favoritos .deezer-title');
+    if (texto) {
+      tituloLista.textContent = `Resultados: "${texto}"`;
+    } else {
+      tituloLista.textContent = "Todas las Canciones";
+    }
+
+    renderizarLista(resultados);
+  });
+
+  // --- FUNCIONES DE AUDIO ---
   function cargarCancion(index) {
     currentTrackIndex = index;
     const cancion = canciones[currentTrackIndex];
@@ -80,7 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
     trackArtist.textContent = artista;
 
     document.querySelectorAll('.cancion-item').forEach((el, i) => {
-      if (i === currentTrackIndex) el.classList.add('activa');
+      // Como ahora la lista puede estar filtrada, verificamos el título
+      const titleText = el.querySelector('.title').textContent;
+      if (titleText === cancion.titulo) el.classList.add('activa');
       else el.classList.remove('activa');
     });
   }
@@ -107,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else reproducir();
   }
 
+  // --- EVENTOS ---
   btnPlay.addEventListener('click', togglePlay);
 
   audio.addEventListener('timeupdate', () => {
@@ -126,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     reproducir();
   };
 
+  // Inicializar
   renderizarLista();
   cargarCancion(0);
 });
