@@ -173,6 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fullTrackTitle.textContent = cancion.titulo;
     fullTrackArtist.textContent = artista;
 
+    // ACTUALIZAR LA NOTIFICACIÓN DE ANDROID AQUÍ
+    actualizarMediaSession(cancion);
+
     actualizarCorazones(cancion.titulo);
 
     document.querySelectorAll('.cancion-item').forEach((el) => {
@@ -185,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function reproducir() {
     if (!audio.src) cargarCancion(0);
     audio.play().then(() => {
-      // GUARDAR ESTADO GLOBAL
       const nuevoEstado = {
         reproduciendo: true,
         src: audio.src,
@@ -206,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     iconPlay.innerHTML = `<path d="M8 5v14l11-7z"/>`; 
     iconPlayFull.innerHTML = `<path d="M8 5v14l11-7z"/>`; 
     
-    // GUARDAR ESTADO GLOBAL (PAUSADO)
     const estadoActual = JSON.parse(localStorage.getItem('ongaku_estado')) || {};
     const nuevoEstado = {
       ...estadoActual,
@@ -275,10 +276,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnSettings) {
     btnSettings.addEventListener('click', () => {
       settingsScreen.classList.add('active');
-      
       const prefOffline = localStorage.getItem('ongaku_offline') === 'true';
       toggleOffline.checked = prefOffline;
-      
       const prefCalidad = localStorage.getItem('ongaku_calidad') || 'standard';
       selectCalidad.value = prefCalidad;
     });
@@ -321,34 +320,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- CONFIGURACIÓN DE LA NOTIFICACIÓN DE ANDROID (MEDIA SESSION) ---
-if ('mediaSession' in navigator) {
-  navigator.mediaSession.setActionHandler('play', () => {
-    reproducir();
-  });
-  navigator.mediaSession.setActionHandler('pause', () => {
-    pausar();
-  });
-  navigator.mediaSession.setActionHandler('previoustrack', () => {
-    anteriorCancion();
-  });
-  navigator.mediaSession.setActionHandler('nexttrack', () => {
-    siguienteCancion();
-  });
-}
-
-// Función para actualizar la notificación cada vez que cambia la canción
-function actualizarMediaSession(cancion) {
   if ('mediaSession' in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: cancion.titulo,
-      artist: artista,
-      album: 'ONGAKU - MizushiKode',
-      artwork: [
-        { src: '../assets/img/icon-musica-512.png', sizes: '512x512', type: 'image/png' }
-      ]
+    navigator.mediaSession.setActionHandler('play', () => {
+      reproducir();
+    });
+    navigator.mediaSession.setActionHandler('pause', () => {
+      pausar();
+    });
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+      anteriorCancion();
+    });
+    navigator.mediaSession.setActionHandler('nexttrack', () => {
+      siguienteCancion();
     });
   }
-}
+
+  // Función para actualizar la notificación
+  function actualizarMediaSession(cancion) {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: cancion.titulo,
+        artist: artista,
+        album: 'ONGAKU - MizushiKode',
+        artwork: [
+          { src: '../assets/img/icon-musica-512.png', sizes: '512x512', type: 'image/png' }
+        ]
+      });
+    }
+  }
 
   // Inicializar
   renderizarLista();
