@@ -237,26 +237,27 @@ body::after {
 .dc-alerta-trampa[data-estado="ok"] .dc-alerta-barra { display: none; }
 body.en-examen { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
 
-/* /// 13. RESPONSIVE (EL ARREGLO DEFINITIVO DEL MENÚ MÓVIL) \\\ */
+/* /// 13. RESPONSIVE (ARREGLO DE BOTONES GIGANTES) \\\ */
 @media (max-width: 768px) {
   .menu-toggle { display: flex; }
   
-  /* El menú ahora usa display: none en lugar de transformaciones raras */
   .nav {
     display: none; 
     flex-direction: column; 
     align-items: stretch;
+    justify-content: flex-start; /* Evita que se separen a la fuerza */
+    gap: 0; /* Quita el espacio del escritorio */
     position: absolute; 
     top: 100%; 
     left: 0; 
     width: 100%;
-    background: #0a0a12 !important; /* Fondo sólido */
+    background: #0a0a12 !important; 
     border-bottom: 2px solid var(--cian); 
-    padding: 10px 20px 20px;
-    z-index: 9999 !important; /* Por encima de todo */
+    padding: 10px 20px;
+    z-index: 9999 !important; 
     box-shadow: 0 15px 40px rgba(0, 0, 0, 1);
-    max-height: 80vh; /* No deja que se salga de la pantalla */
-    overflow-y: auto; /* Permite hacer scroll si hay muchos enlaces */
+    max-height: 80vh; 
+    overflow-y: auto; 
   }
   
   .nav.active { 
@@ -264,28 +265,46 @@ body.en-examen { user-select: none; -webkit-user-select: none; -moz-user-select:
   }
   
   .nav a { 
-    padding: 12px 0; 
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto; /* Evita que el botón se estire */
+    padding: 15px 0; 
+    font-size: 1.1rem; 
     border-bottom: 1px solid rgba(255,255,255,0.05); 
     width: 100%;
   }
-  .nav a:last-child { border-bottom: none; }
-  
-  .nav-title { display: block; font-family: 'Orbitron'; font-size: 0.7rem; color: var(--texto-dim); margin-top: 15px; margin-bottom: 5px; letter-spacing: 2px; }
-  .nav-divider { display: block; height: 1px; background: var(--borde); margin: 10px 0; }
-  
-  .nav-btn {
-    display: flex; align-items: center; gap: 10px;
-    background: transparent; border: none; color: var(--texto);
-    padding: 12px 0; font-family: 'Rajdhani'; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+
+  /* ¡ESTA ES LA MAGIA! Arreglamos el tamaño de los iconos */
+  .nav a svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
   }
-  .nav-btn:hover { color: var(--cian); }
   
-  /* Asegurarnos de que el botón de login no se vuelva loco */
+  .nav-title { 
+    display: block; 
+    font-family: 'Orbitron'; 
+    font-size: 0.7rem; 
+    color: var(--texto-dim); 
+    margin-top: 15px; 
+    margin-bottom: 5px; 
+    letter-spacing: 2px; 
+  }
+  
+  .nav-divider { 
+    display: block; 
+    height: 1px; 
+    background: var(--borde); 
+    margin: 10px 0; 
+  }
+  
   #navAuthBtn {
-    margin-top: 10px;
-    padding: 10px !important;
+    margin-top: 15px;
+    padding: 12px !important;
     display: block;
-    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
   
   .hero { grid-template-columns: 1fr; text-align: center; padding: 3rem 1.2rem; }
