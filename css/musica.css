@@ -277,3 +277,104 @@ body.deezer-body {
 .nav-item.active { color: #ff2e97; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* /// REPRODUCTOR A PANTALLA COMPLETA \\\ */
+.full-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #ff2e97 0%, #0f0f11 60%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.full-player.active {
+  transform: translateY(0);
+}
+
+.full-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-icon svg { width: 30px; height: 30px; }
+
+.full-player-cover {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.full-player-cover svg { width: 100px; height: 100px; color: rgba(255,255,255,0.5); }
+
+.full-player-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.full-player-info h2 { margin: 0; font-size: 1.5rem; font-weight: 800; }
+.full-player-info p { margin: 5px 0 0; color: rgba(255,255,255,0.7); font-size: 1rem; }
+.btn-heart svg { width: 30px; height: 30px; }
+
+.full-player-progress {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.full-player-progress .progress-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.full-player-progress .progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: #fff;
+  border-radius: 2px;
+}
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  font-family: monospace;
+}
+
+.full-player-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.full-player-controls .btn-control svg { width: 35px; height: 35px; }
+.full-player-controls .btn-play-main {
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  color: #ff2e97;
+}
+.full-player-controls .btn-play-main svg { width: 40px; height: 40px; margin-left: 4px; }
