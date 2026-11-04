@@ -177,6 +177,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function reproducir() {
     if (!audio.src) cargarCancion(0);
     audio.play().then(() => {
+  const nuevoEstado = {
+    reproduciendo: true,
+    src: audio.src,
+    titulo: canciones[currentTrackIndex].titulo,
+    tiempo: audio.currentTime
+  };
+  localStorage.setItem('ongaku_estado', JSON.stringify(nuevoEstado));
       isPlaying = true;
       iconPlay.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; 
       iconPlayFull.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; 
