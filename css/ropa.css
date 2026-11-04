@@ -311,3 +311,72 @@ body.en-examen { user-select: none; -webkit-user-select: none; -moz-user-select:
   .hero-btns { justify-content: center; }
   .avatar-box { margin: 0 auto; }
 }
+
+/* /// REPRODUCTOR GLOBAL FLOTANTE (ACADEMIA) \\\ */
+.global-player {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(10, 10, 18, 0.95);
+  border: 1px solid var(--cian);
+  border-radius: 30px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 10000;
+  box-shadow: 0 5px 20px rgba(0, 245, 255, 0.2);
+  animation: slideInLeft 0.5s ease;
+}
+
+.global-player-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+}
+
+#global-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  color: var(--texto);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#global-artist {
+  font-size: 0.7rem;
+  color: var(--texto-dim);
+}
+
+.global-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.global-btn {
+  background: var(--violeta);
+  border: none;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.global-btn:hover {
+  background: var(--cian);
+  color: #000;
+  transform: scale(1.1);
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
