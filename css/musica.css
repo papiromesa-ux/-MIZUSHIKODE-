@@ -389,3 +389,128 @@ body.deezer-body {
   color: #ff2e97;
   text-shadow: 0 0 10px #ff2e97;
 }
+
+/* /// PANTALLA DE AJUSTES \\\ */
+.settings-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0f0f11;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.settings-screen.active {
+  transform: translateX(0);
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #0f0f11;
+  border-bottom: 1px solid #23232a;
+}
+
+.settings-header h2 {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.settings-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.settings-group-title {
+  color: var(--magenta);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #23232a;
+}
+
+.settings-label {
+  display: block;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.settings-desc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--texto-dim);
+  margin-top: 4px;
+}
+
+.settings-select {
+  background: #1a1a2e;
+  color: #fff;
+  border: 1px solid #23232a;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Switch Toggle (Estilo iOS/Android) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #555;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--magenta);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
