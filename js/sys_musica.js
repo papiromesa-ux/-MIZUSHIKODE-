@@ -320,6 +320,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- CONFIGURACIÓN DE LA NOTIFICACIÓN DE ANDROID (MEDIA SESSION) ---
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.setActionHandler('play', () => {
+    reproducir();
+  });
+  navigator.mediaSession.setActionHandler('pause', () => {
+    pausar();
+  });
+  navigator.mediaSession.setActionHandler('previoustrack', () => {
+    anteriorCancion();
+  });
+  navigator.mediaSession.setActionHandler('nexttrack', () => {
+    siguienteCancion();
+  });
+}
+
+// Función para actualizar la notificación cada vez que cambia la canción
+function actualizarMediaSession(cancion) {
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: cancion.titulo,
+      artist: artista,
+      album: 'ONGAKU - MizushiKode',
+      artwork: [
+        { src: '../assets/img/icon-musica-512.png', sizes: '512x512', type: 'image/png' }
+      ]
+    });
+  }
+}
+
   // Inicializar
   renderizarLista();
   cargarCancion(0);
