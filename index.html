@@ -47,6 +47,7 @@
       
       <div class="nav-title">HERRAMIENTAS</div>
       <a href="pages/vestidores.html">
+        <!-- Arreglado el x1="123" por x1="12" -->
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         Vestidores
       </a>
@@ -57,6 +58,7 @@
 
       <div class="nav-divider"></div>
       
+      <!-- Arreglado el padding: 1000px por padding: 10px -->
       <a href="pages/login.html" id="navAuthBtn" class="btn-nav" style="text-align: center; justify-content: center; margin-top: 10px; border: 1px solid var(--cian); padding: 10px; border-radius: 6px; color: var(--cian) !important; background: rgba(0, 245, 255, 0.05);">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
         Iniciar Sesión
@@ -192,13 +194,12 @@
           splash.style.opacity = '0'; 
           setTimeout(() => splash.remove(), 500); 
         }
-      }, 1500); // Reducido a 1.5s para que sea más rápido
+      }, 1500);
     });
-    // Red de seguridad extra: si algo falla, quitarla a los 4 segundos sí o sí
     setTimeout(() => {
        const splash = document.getElementById('splash-screen');
        if (splash) splash.remove();
     }, 4000);
   </script>
 </body>
-</html>,
+</html>
