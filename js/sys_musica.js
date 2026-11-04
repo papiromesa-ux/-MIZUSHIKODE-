@@ -43,6 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnShuffle = document.getElementById('btn-shuffle');
   const btnRepeat = document.getElementById('btn-repeat');
 
+  // Elementos de Ajustes
+  const btnSettings = document.getElementById('btn-settings');
+  const settingsScreen = document.getElementById('settings-screen');
+  const btnCloseSettings = document.getElementById('btn-close-settings');
+  const toggleOffline = document.getElementById('toggle-offline');
+  const selectCalidad = document.getElementById('calidad-audio');
+  const btnBorrarCache = document.getElementById('btn-borrar-cache');
+
   let currentTrackIndex = 0;
   let isPlaying = false;
   let isShuffle = false;
@@ -177,13 +185,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function reproducir() {
     if (!audio.src) cargarCancion(0);
     audio.play().then(() => {
-  const nuevoEstado = {
-    reproduciendo: true,
-    src: audio.src,
-    titulo: canciones[currentTrackIndex].titulo,
-    tiempo: audio.currentTime
-  };
-  localStorage.setItem('ongaku_estado', JSON.stringify(nuevoEstado));
+      // GUARDAR ESTADO GLOBAL
+      const nuevoEstado = {
+        reproduciendo: true,
+        src: audio.src,
+        titulo: canciones[currentTrackIndex].titulo,
+        tiempo: audio.currentTime
+      };
+      localStorage.setItem('ongaku_estado', JSON.stringify(nuevoEstado));
+      
       isPlaying = true;
       iconPlay.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; 
       iconPlayFull.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; 
@@ -195,6 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
     isPlaying = false;
     iconPlay.innerHTML = `<path d="M8 5v14l11-7z"/>`; 
     iconPlayFull.innerHTML = `<path d="M8 5v14l11-7z"/>`; 
+    
+    // GUARDAR ESTADO GLOBAL (PAUSADO)
+    const estadoActual = JSON.parse(localStorage.getItem('ongaku_estado')) || {};
+    const nuevoEstado = {
+      ...estadoActual,
+      reproduciendo: false
+    };
+    localStorage.setItem('ongaku_estado', JSON.stringify(nuevoEstado));
   }
 
   function togglePlay() {
@@ -204,10 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function siguienteCancion() {
     if (isShuffle) {
-      // Reproducir una canción al azar
       currentTrackIndex = Math.floor(Math.random() * canciones.length);
     } else {
-      // Reproducir la siguiente en orden
       currentTrackIndex = (currentTrackIndex + 1) % canciones.length;
     }
     cargarCancion(currentTrackIndex);
@@ -220,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isPlaying) reproducir();
   }
 
-  // --- EVENTOS ---
+  // --- EVENTOS REPRODUCTOR ---
   btnPlay.addEventListener('click', togglePlay);
   btnPlayFull.addEventListener('click', togglePlay);
   btnNextFull.addEventListener('click', siguienteCancion);
@@ -235,7 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fullPlayer.classList.remove('active');
   });
 
-  // Lógica cuando termina una canción
   audio.addEventListener('ended', () => {
     if (isRepeat) {
       audio.currentTime = 0;
@@ -255,6 +270,55 @@ document.addEventListener('DOMContentLoaded', () => {
   audio.addEventListener('loadedmetadata', () => {
     fullTimeTotal.textContent = formatearTiempo(audio.duration);
   });
+
+  // --- LÓGICA DE LA PANTALLA DE AJUSTES ---
+  if (btnSettings) {
+    btnSettings.addEventListener('click', () => {
+      settingsScreen.classList.add('active');
+      
+      const prefOffline = localStorage.getItem('ongaku_offline') === 'true';
+      toggleOffline.checked = prefOffline;
+      
+      const prefCalidad = localStorage.getItem('ongaku_calidad') || 'standard';
+      selectCalidad.value = prefCalidad;
+    });
+  }
+
+  if (btnCloseSettings) {
+    btnCloseSettings.addEventListener('click', () => {
+      settingsScreen.classList.remove('active');
+    });
+  }
+
+  if (toggleOffline) {
+    toggleOffline.addEventListener('change', (e) => {
+      localStorage.setItem('ongaku_offline', e.target.checked);
+      if (e.target.checked) {
+        alert("Modo sin conexión activado.");
+      }
+    });
+  }
+
+  if (selectCalidad) {
+    selectCalidad.addEventListener('change', (e) => {
+      localStorage.setItem('ongaku_calidad', e.target.value);
+    });
+  }
+
+  if (btnBorrarCache) {
+    btnBorrarCache.addEventListener('click', () => {
+      if (confirm("¿Seguro que quieres borrar el caché de ONGAKU? Se recargará la app.")) {
+        caches.keys().then((names) => {
+          for (let name of names) {
+            if (name.includes('ongaku')) caches.delete(name);
+          }
+        }).then(() => {
+          alert("Caché borrado. Recargando...");
+          location.reload();
+        });
+      }
+    });
+  }
 
   // Inicializar
   renderizarLista();
