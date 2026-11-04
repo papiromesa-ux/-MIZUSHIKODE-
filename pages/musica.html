@@ -141,5 +141,19 @@
   <audio id="audio-player"></audio>
 
   <script src="../js/sys_musica.js"></script>
+
+  <!-- REGISTRO DEL SERVICE WORKER EXCLUSIVO DE ONGAKU -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        // Le decimos que busque el archivo en la raíz
+        navigator.serviceWorker.register('../sw-musica.js', { scope: '../' })
+          .then(reg => console.log('ONGAKU SW registrado con éxito'))
+          .catch(err => console.log('Error al registrar ONGAKU SW:', err));
+      });
+    }
+  </script>
+</body>
+</html>
 </body>
 </html>
