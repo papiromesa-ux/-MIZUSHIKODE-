@@ -26,7 +26,7 @@ body {
   position: relative;
 }
 
-/* El piso de cuadritos en perspectiva (El Viewport) */
+/* El piso de cuadritos en perspectiva */
 body::before {
   content: '';
   position: fixed;
@@ -46,7 +46,7 @@ body::before {
   -webkit-mask-image: linear-gradient(to top, black 10%, transparent 90%);
 }
 
-/* Un resplandor cenital */
+/* Resplandor cenital */
 body::after {
   content: '';
   position: fixed;
@@ -63,12 +63,12 @@ body::after {
 .header { 
   position: sticky; 
   top: 0; 
-  z-index: 100; 
+  z-index: 1000; 
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
   padding: 1rem 2rem; 
-  background: rgba(10, 10, 18, 0.85); 
+  background: rgba(10, 10, 18, 0.95); 
   backdrop-filter: blur(10px); 
   border-bottom: 1px solid var(--borde); 
 }
@@ -164,10 +164,7 @@ body::after {
   text-align: center;
   letter-spacing: 2px;
   line-height: 1.2;
-  text-shadow: 
-    0px 3px 0px #3b1b5c, 
-    0px 5px 10px rgba(0,0,0,0.8),
-    0px 0px 15px rgba(0, 245, 255, 0.3);
+  text-shadow: 0px 3px 0px #3b1b5c, 0px 5px 10px rgba(0,0,0,0.8), 0px 0px 15px rgba(0, 245, 255, 0.3);
   margin-bottom: 1rem;
 }
 .texto-3d-neon {
@@ -240,25 +237,37 @@ body::after {
 .dc-alerta-trampa[data-estado="ok"] .dc-alerta-barra { display: none; }
 body.en-examen { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
 
-/* /// 13. RESPONSIVE (EL ARREGLO DEL MENÚ MÓVIL) \\\ */
+/* /// 13. RESPONSIVE (EL ARREGLO DEFINITIVO DEL MENÚ MÓVIL) \\\ */
 @media (max-width: 768px) {
   .menu-toggle { display: flex; }
   
-.nav {
-  display: flex; flex-direction: column; align-items: stretch;
-  position: absolute; top: 100%; left: 0; width: 100%;
+  /* El menú ahora usa display: none en lugar de transformaciones raras */
+  .nav {
+    display: none; 
+    flex-direction: column; 
+    align-items: stretch;
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    width: 100%;
+    background: #0a0a12 !important; /* Fondo sólido */
+    border-bottom: 2px solid var(--cian); 
+    padding: 10px 20px 20px;
+    z-index: 9999 !important; /* Por encima de todo */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 1);
+    max-height: 80vh; /* No deja que se salga de la pantalla */
+    overflow-y: auto; /* Permite hacer scroll si hay muchos enlaces */
+  }
   
-  /* LA SOLUCIÓN: Fondo 100% sólido y Z-index por las nubes */
-  background: #0a0a12 !important; 
-  border-bottom: 2px solid var(--cian); 
-  padding: 10px 20px 20px;
-  transform: scaleY(0); transform-origin: top; transition: transform 0.3s ease;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 1);
-  z-index: 9999 !important;
-}
-  .nav.active { transform: scaleY(1); }
+  .nav.active { 
+    display: flex; 
+  }
   
-  .nav a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav a { 
+    padding: 12px 0; 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    width: 100%;
+  }
   .nav a:last-child { border-bottom: none; }
   
   .nav-title { display: block; font-family: 'Orbitron'; font-size: 0.7rem; color: var(--texto-dim); margin-top: 15px; margin-bottom: 5px; letter-spacing: 2px; }
@@ -270,6 +279,14 @@ body.en-examen { user-select: none; -webkit-user-select: none; -moz-user-select:
     padding: 12px 0; font-family: 'Rajdhani'; font-size: 1.1rem; font-weight: 600; cursor: pointer;
   }
   .nav-btn:hover { color: var(--cian); }
+  
+  /* Asegurarnos de que el botón de login no se vuelva loco */
+  #navAuthBtn {
+    margin-top: 10px;
+    padding: 10px !important;
+    display: block;
+    width: 100%;
+  }
   
   .hero { grid-template-columns: 1fr; text-align: center; padding: 3rem 1.2rem; }
   .hero-btns { justify-content: center; }
