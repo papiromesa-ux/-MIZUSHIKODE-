@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&lt;MizushiKode&gt; - Entra a la Academia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/ropa.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0a12">
+</head>
+<body>
+  
+  <!-- PANTALLA DE CARGA (SPLASH SCREEN) -->
+  <div id="splash-screen" style="position: fixed; inset: 0; background-color: #0a0a12; z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease;">
+    <img src="assets/img/splash-alexander.png" alt="Cargando MizushiKode..." style="width: 80%; max-width: 350px; border-radius: 20px; box-shadow: 0 0 30px rgba(123, 44, 191, 0.5);">
+  </div>
+
+  <!-- /// 1. HEADER (Menú Academia 3D) \\\ -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <span class="logo-yami">&lt;MIZUSHI</span><span class="logo-code">KODE&gt;</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <div class="nav-title">ACADEMIA</div>
+      <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Inicio
+      </a>
+      <a href="pages/aula.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        Aulas
+      </a>
+      <a href="pages/labs.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        Clubs
+      </a>
+      
+      <div class="nav-divider"></div>
+      
+      <div class="nav-title">HERRAMIENTAS</div>
+      
+      <!-- ENLACE A ONGAKU -->
+      <a href="https://papiromesa-ux.github.io/-ONGAKU-/">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+        </svg>
+        ONGAKU (Música)
+      </a>
+      
+      <a href="pages/vestidores.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Vestidores
+      </a>
+      <a href="pages/buzon.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        Buzón
+      </a>
+
+      <div class="nav-divider"></div>
+      
+      <a href="pages/login.html" id="navAuthBtn" class="btn-nav" style="text-align: center; justify-content: center; margin-top: 10px; border: 1px solid var(--cian); padding: 10px; border-radius: 6px; color: var(--cian) !important; background: rgba(0, 245, 255, 0.05);">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+        Iniciar Sesión
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- /// 2. HERO (BIENVENIDA) \\\ -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1 class="texto-3d">
+          <span class="logo-yami">&lt;MIZUSHI</span><span class="logo-code">KODE&gt;</span><br>
+          ACADEMIA
+        </h1>
+        <p class="hero-sub" style="text-align: center; font-size: 1.2rem; color: var(--texto-dim);">&lt;Bienvenido a tu entrenamiento&gt;</p>
+        
+        <div class="hero-btns" style="justify-content: center; gap: 1rem; display: flex; flex-wrap: wrap;">
+          <a href="pages/aula.html" class="btn btn-primary btn-icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            Entrar a las Aulas
+          </a>
+          <a href="pages/labs.html" class="btn btn-ghost btn-icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+            Ir a los Clubs
+          </a>
+        </div>
+      </div>
+      
+      <!-- /// 3. CAJA DEL AVATAR 3D \\\ -->
+      <div class="hero-avatar">
+        <div class="avatar-glow"></div>
+        <div class="avatar-box" id="avatarBox">
+          
+          <div id="vrm-container" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; background-image: linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+          
+          <div id="texto-avatar" style="display: block; position: absolute; bottom: 1rem; left: 0; width: 100%; text-align: center; z-index: 2; pointer-events: none;">
+            <p class="avatar-name" id="nombre-avatar-actual" style="margin: 0; text-shadow: 0 0 10px #000; font-size: 1.5rem;">Ve al Vestidor</p>
+            <p class="avatar-status" style="text-shadow: 0 0 5px #000; font-family: monospace; color: #00ff88; font-size: 0.8rem; margin-top: 5px;">OFFLINE</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- /// 4. RUTAS DE APRENDIZAJE (DISTRITOS CON IMÁGENES) \\\ -->
+    <section class="section">
+      <h2 class="texto-3d" style="font-size: 2.2rem; margin-bottom: 0.5rem;">&lt;Selecciona tu&gt; DISTRITO</h2>
+      <p class="section-sub" style="text-align: center; margin-bottom: 3rem;">&lt;Elige un área y comienza tu entrenamiento&gt;</p>
+      
+      <div class="grid-3">
+        
+        <!-- Distrito 1: Programación Web -->
+        <div class="card-3d">
+          <div class="card-icon-3d">
+            <img src="assets/img/pw.png" alt="Programación Web" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h3 class="card-title-3d">Programación Web</h3>
+          <p class="card-text-3d">Aprende HTML, CSS, JS y domina la red desde los cimientos hasta el despliegue.</p>
+          <a href="pages/aula.html" class="card-btn-3d">
+            Entrar al Distrito
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Distrito 2: Creación de Apps -->
+        <div class="card-3d">
+          <div class="card-icon-3d">
+            <img src="assets/img/pm.png" alt="Creación de Apps" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h3 class="card-title-3d">Creación de Apps</h3>
+          <p class="card-text-3d">Desarrolla software para móviles, APKs y domina el ecosistema Android e iOS.</p>
+          <a href="pages/apps.html" class="card-btn-3d">
+            Entrar al Distrito
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Distrito 3: Clubs Especiales -->
+        <div class="card-3d">
+          <div class="card-icon-3d">
+            <img src="assets/img/es.png" alt="Clubs Especiales" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h3 class="card-title-3d">Clubs Especiales</h3>
+          <p class="card-text-3d">Únete a los clubs de Hackodeo, Ciberseguridad, Gamercraft y Software Móvil.</p>
+          <a href="pages/labs.html" class="card-btn-3d">
+            Entrar al Club
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- /// 5. FOOTER Y SCRIPTS \\\ -->
+  <footer class="footer">
+    <div class="footer-logo"><span class="logo-yami">MIZUSHI</span><span class="logo-code">KODE</span></div>
+    <p>PAPIROMESA-UX RELEASE 1 MIZUSHIKODE.</p>
+  </footer>
+  
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./js/libs/three.module.js",
+        "three/addons/": "./js/libs/addons/"
+      }
+    }
+  </script>
+  
+  <!-- Cerebro para el menú y eventos -->
+  <script src="js/cerebro.js"></script>
+  
+  <!-- Scripts de Firebase y 3D -->
+  <script type="module" src="js/sys_index.js"></script>
+  <script type="module" src="js/sys_3d.js"></script>
+
+  <!-- Service Worker (PWA) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('Error SW:', err));
+      });
+    }
+  </script>
+
+  <!-- Pantalla de Carga (Red de seguridad) -->
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.style.opacity = '0'; 
+          setTimeout(() => splash.remove(), 500); 
+        }
+      }, 1500);
+    });
+    setTimeout(() => {
+       const splash = document.getElementById('splash-screen');
+       if (splash) splash.remove();
+    }, 4000);
+  </script>
+    <!-- Reproductor Global (Música de fondo) -->
+  <script src="js/sys_audio_global.js"></script>
+</body>
+</html>
